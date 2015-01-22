@@ -1,3 +1,5 @@
+#!/bin/env node
+
 /**
 * Provided under the MIT License (c) 2014
 * See LICENSE @file for details.
@@ -13,7 +15,8 @@
 
 // declare application constants
 
-var SERVER_PORT				= 8000;
+var SERVER_HOST 			= process.env.OPENSHIFT_NODEJS_IP 	|| 127.0.0.1;
+var SERVER_PORT				= process.env.OPENSHIFT_NODEJS_PORT || 8000;
 var SERVER_HEAD_OK			= 200;
 var SERVER_HEAD_NOTFOUND 	= 404;
 var SERVER_HEAD_ERROR 		= 500;
