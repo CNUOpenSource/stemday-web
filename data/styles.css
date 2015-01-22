@@ -1,0 +1,134 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700);
+
+body {
+background:url(../img/bg.png) no-repeat 0 0 fixed; background-size:cover; font:400 16px 'Source Sans Pro';
+}
+a.block {
+position:absolute; left:0; top:0; width:100%; height:100%; display:block; background:;
+}
+p.intro-top {
+margin-bottom:20px;
+}
+.intro-top-fancy {
+	font-weight:400;
+	font-family:'Source Sans Pro';
+	font-size:1.5em;
+}
+	p.intro-top input,p.intro input {
+		padding:10px; min-width:400px; background:transparent; border:0; color:rgb(0,0,0);
+		font-size:1.5em;
+		font-weight:200;
+		font-family:'Source Sans Pro';
+	}
+
+	p.intro-top input:focus,p.intro input:focus,p.intro-top select:focus,p.intro select:focus {
+		outline:0;
+	}
+
+	p.intro-top select,p.intro select {
+		min-width:400px; background:transparent; border:0;
+		font-size:1.5em;
+		font-weight:200;
+		font-family:'Source Sans Pro';
+
+		color:#aaa;
+	}
+
+.spacer {
+width:400px; height:40px;
+}
+
+.navbar {
+background:rgba(255,255,255,0.93);
+}
+.navbar-custom {
+color:red;
+}
+
+.container {
+margin: 0 auto;max-width: 960px;
+}
+	.container#main-container {
+	background:rgba(255,255,255,0.67);
+	}
+
+.button {
+cursor:pointer; color:white; font-size:1.25em;
+}
+	.button-active {
+	background:#428bca; border-color:#357ebd;
+	}
+		.button-active:hover {
+		background:#357ebd;
+		}
+		.button-active:active {
+		box-shadow:inset 0 2px 1px rgba(0,0,0,0.1);
+		}
+	.button-active2 {
+	background:#5cb85c; border-color:#4cae4c;
+	}
+		.button-active2:hover {
+		background:rgba(68,156,68,0.9);
+		}
+.jumbotron:first-child {
+background:url(../img/stem_logo.png) no-repeat center center; background-size:74%; min-height:311px; position:relative; z-index:99;
+}
+	.pic {
+	position:absolute; height:242px; width:190px;
+	}
+
+	.pic-left {
+	left:-90px; background:url(../img/thumbs/6.jpg) no-repeat 0 0; background-size:100%;
+	transform:rotate(-6deg); border:5px solid rgba(228,230,229,0.9);
+	-ms-transform:rotate(-6deg); /* IE 9 */
+	-webkit-transform:rotate(-6deg);
+	-moz-transform:rotate(-6deg);
+	}
+	.pic-right {
+	right:-90px; background:url(../img/thumbs/7.jpg) no-repeat 0 0; background-size:100%;
+	transform:rotate(6deg); border:5px solid rgba(228,230,229,0.9); height:200px;
+	-ms-transform:rotate(6deg); /* IE 9 */
+	-webkit-transform:rotate(6deg);
+	-moz-transform:rotate(6deg);
+	}
+.carousel {
+max-height:600px; overflow-y:hidden;
+}
+	.carousel #photoroll {
+	position:relative; height:600px; overflow-y:hidden; background:green;
+	}
+		.carousel-caption#static-caption {
+		position:absolute; width:100%; height:200px; bottom:70px; left:0; z-index:1;
+		}
+.carousel-control {
+cursor:pointer; z-index:2;
+}
+.register-button {
+text-align:center; position:relative;
+}
+.list-group {
+
+}
+	.list-group-item {
+	background:rgba(255,255,255,0.65);
+	}
+
+.semi-transparent,.semi-transparent#main-container {
+background-color:rgba(255,255,255,0.8);
+}
+.button-active-checkbox {
+background:transparent; color:black;
+}
+	.button-active-checkbox:hover {
+		color:white;
+		background:#428bca;
+	}
+
+	.button-active-checkbox:active {
+		color:white;
+		background:#357ebd;
+	}
+
+.checkbox2 {
+width:50%; margin:0 auto;
+}

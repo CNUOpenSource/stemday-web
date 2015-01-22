@@ -1,159 +1,151 @@
-#!/bin/env node
-//  OpenShift sample Node application
-var express = require('express');
-var fs      = require('fs');
+/**
+* Provided under the MIT License (c) 2014
+* See LICENSE @file for details.
+*
+* @file server.js
+*
+* @author juanvallejo
+* @date 1/22/15
+*
+* Small server application written in javascript to test the hosting of stem day website and signup forms
+*
+**/
 
+// declare application constants
+
+var SERVER_PORT				= 8000;
+var SERVER_HEAD_OK			= 200;
+var SERVER_HEAD_NOTFOUND 	= 404;
+var SERVER_HEAD_ERROR 		= 500;
+var SERVER_RES_NOTFOUND		= '404. The file you are looking for could not be found.';
+var SERVER_RES_OK 			= '200. Server status: OK';
+
+// import node.js packages
+
+var fs 				= require('fs');
+var http 			= require('http');
+
+// begin application declarations
+
+var application		= null;				// holds our main application server. Initialized in main
+var currentRequest 	= null;				// define current parsed / routed request being handled
+
+var dictionaryOfMimeTypes = {
+
+	'css' 	: 'text/css' 				,
+	'html' 	: 'text/html' 				,
+	'ico' 	: 'image/x-icon'			,
+	'jpg' 	: 'image/jpeg'				,
+	'jpeg' 	: 'image/jpeg' 				,
+	'js' 	: 'application/javascript' 	,
+	'map' 	: 'application/x-navimap'	,
+	'pdf' 	: 'application/pdf' 		,
+	'png' 	: 'image/png'				,
+	'txt' 	: 'text/plain'
+
+};
+
+var dictionaryOfRoutes 	= {
+
+	'/'  					: 'index.html' 						,
+	'/register/exhibitor' 	: 'exhibitor-registration.html' 	,
+	'/register/participant' : 'participant-registration.html'
+
+};
+
+// declare functions and methodical procedures
 
 /**
- *  Define the sample application.
+ * Checks all incoming requests to see if routing is applicable to them.
+ *
+ * @return {String} routedRequest
  */
-var SampleApp = function() {
+function requestRouter(request, response) {
 
-    //  Scope.
-    var self = this;
+	// return default request by default
+	var requestToHandle	= request.url;
+	var routedRequest 	= request.url;
 
+	if(dictionaryOfRoutes.hasOwnProperty(requestToHandle)) {
+		routedRequest = dictionaryOfRoutes[requestToHandle];
+	}
 
-    /*  ================================================================  */
-    /*  Helper functions.                                                 */
-    /*  ================================================================  */
+	return routedRequest;
 
-    /**
-     *  Set up server IP address and port # using env variables/defaults.
-     */
-    self.setupVariables = function() {
-        //  Set the environment variables we need.
-        self.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
-        self.port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-
-        if (typeof self.ipaddress === "undefined") {
-            //  Log errors on OpenShift but continue w/ 127.0.0.1 - this
-            //  allows us to run/test the app locally.
-            console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
-            self.ipaddress = "127.0.0.1";
-        };
-    };
-
-
-    /**
-     *  Populate the cache.
-     */
-    self.populateCache = function() {
-        if (typeof self.zcache === "undefined") {
-            self.zcache = { 'index.html': '' };
-        }
-
-        //  Local cache for static content.
-        self.zcache['index.html'] = fs.readFileSync('./index.html');
-    };
-
-
-    /**
-     *  Retrieve entry (content) from cache.
-     *  @param {string} key  Key identifying content to retrieve from cache.
-     */
-    self.cache_get = function(key) { return self.zcache[key]; };
-
-
-    /**
-     *  terminator === the termination handler
-     *  Terminate server on receipt of the specified signal.
-     *  @param {string} sig  Signal to terminate on.
-     */
-    self.terminator = function(sig){
-        if (typeof sig === "string") {
-           console.log('%s: Received %s - terminating sample app ...',
-                       Date(Date.now()), sig);
-           process.exit(1);
-        }
-        console.log('%s: Node server stopped.', Date(Date.now()) );
-    };
-
-
-    /**
-     *  Setup termination handlers (for exit and a list of signals).
-     */
-    self.setupTerminationHandlers = function(){
-        //  Process on exit and signals.
-        process.on('exit', function() { self.terminator(); });
-
-        // Removed 'SIGPIPE' from the list - bugz 852598.
-        ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
-         'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'
-        ].forEach(function(element, index, array) {
-            process.on(element, function() { self.terminator(element); });
-        });
-    };
-
-
-    /*  ================================================================  */
-    /*  App server functions (main app logic here).                       */
-    /*  ================================================================  */
-
-    /**
-     *  Create the routing table entries + handlers for the application.
-     */
-    self.createRoutes = function() {
-        self.routes = { };
-
-        self.routes['/asciimo'] = function(req, res) {
-            var link = "http://i.imgur.com/kmbjB.png";
-            res.send("<html><body><img src='" + link + "'></body></html>");
-        };
-
-        self.routes['/'] = function(req, res) {
-            res.setHeader('Content-Type', 'text/html');
-            res.send(self.cache_get('index.html') );
-        };
-    };
-
-
-    /**
-     *  Initialize the server (express) and create the routes and register
-     *  the handlers.
-     */
-    self.initializeServer = function() {
-        self.createRoutes();
-        self.app = express.createServer();
-
-        //  Add handlers for the app (from the routes).
-        for (var r in self.routes) {
-            self.app.get(r, self.routes[r]);
-        }
-    };
-
-
-    /**
-     *  Initializes the sample application.
-     */
-    self.initialize = function() {
-        self.setupVariables();
-        self.populateCache();
-        self.setupTerminationHandlers();
-
-        // Create the express server and routes.
-        self.initializeServer();
-    };
-
-
-    /**
-     *  Start the server (starts up the sample application).
-     */
-    self.start = function() {
-        //  Start the app on the specific interface (and port).
-        self.app.listen(self.port, self.ipaddress, function() {
-            console.log('%s: Node server started on %s:%d ...',
-                        Date(Date.now() ), self.ipaddress, self.port);
-        });
-    };
-
-};   /*  Sample Application.  */
-
-
+}
 
 /**
- *  main():  Main code.
+ * Checks passed requests for a defined file Mime Type.
+ *
+ * @return {String} requestMimeType		a file mimetype of current request if defined, or a default .txt mime type 
+ * 										if request's mime type is not defined
  */
-var zapp = new SampleApp();
-zapp.initialize();
-zapp.start();
+function mimeTypeParser(request, response) {
 
+	var requestToHandle 		= requestRouter(request, response);
+	var requestMimeType 		= dictionaryOfMimeTypes['txt'];
+
+	// retrieve file extension from current request by grabbing
+	// suffix after last period of request string
+	var requestFileExtension	= requestToHandle.split('.');
+	requestFileExtension 		= requestFileExtension[requestFileExtension.length - 1];
+	requestFileExtension 		= requestFileExtension.split('&')[0];
+
+	if(dictionaryOfMimeTypes.hasOwnProperty(requestFileExtension)) {
+		requestMimeType = dictionaryOfMimeTypes[requestFileExtension];
+	}
+
+	return requestMimeType;
+}
+
+/**
+ * Serves current request as a stream from a file on the server
+ */
+function handleRequestAsFileStream(request, response) {
+
+	var requestToHandle = requestRouter(request, response);
+
+	fs.readFile(__dirname + '/' + requestToHandle, function(error, data) {
+
+		if(error) {
+
+			console.log('File ' + requestToHandle + ' could not be served -> ' + error);
+			
+			response.writeHead(SERVER_HEAD_NOTFOUND);
+			response.end(SERVER_RES_NOTFOUND);
+		}
+
+		response.writeHead(SERVER_HEAD_OK, {
+			'Content-Type' : mimeTypeParser(request, response)
+		});
+
+		response.end(data);
+
+	});
+
+}
+
+/**
+ * handle all initial application requests, assign routes, etc.
+ */
+function mainRequestHandler(request, response) {
+
+		// assign global definition for current request being handled
+		currentRequest = requestRouter(request, response);
+
+		if(currentRequest.match(/^\/test(\/)?$/gi)) {
+			response.writeHead(SERVER_HEAD_OK);
+			response.end(SERVER_RES_OK);
+		} else {
+			handleRequestAsFileStream(request, response);
+		}
+}
+
+// initialize application
+(function main() {
+
+	// define global application server and bind to a specified port
+	application = http.createServer(mainRequestHandler);
+	application.listen(SERVER_PORT);
+
+})();

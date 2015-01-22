@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>STEM Community Day - Exhibitor Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link href="/data/bootstrap.min.css" rel="stylesheet">
+<!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="http://www.bootply.com/bootstrap/img/thumbs/favicon.ico">
+<link rel="apple-touch-icon" href="http://www.bootply.com/bootstrap/img/thumbs/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://www.bootply.com/bootstrap/img/thumbs/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="http://www.bootply.com/bootstrap/img/thumbs/apple-touch-icon-114x114.png">
+<link rel="stylesheet" href="/data/styles.css"/>
+
+</head>
+    
+    
+<body>
+
+<div class="navbar navbar-default">
+  <div class="container">
+    <a class="navbar-brand">STEM</a>
+    <ul class="nav navbar-nav ">
+        <li><a href="/">Home</a></li>
+        <li><a href="mailto:stemday@cnu.edu">Contact</a></li>
+        <li class="divider-vertical"></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a>Register</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container semi-transparent" id="main-container">
+
+    <div class="jumbotron text-center">
+        <div class="pic pic-left"></div>
+        <div class="pic pic-right"></div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-6">
+            <h4 class="intro-top-fancy">Contact First Name</h4>
+            <p class="intro-top"><input class="register-input" type="text" placeholder="Enter your first name..."/></p>
+          
+            <h4 class="intro-top-fancy">Contact Last Name</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="Enter your last name..."/></p>
+
+            <h4 class="intro-top-fancy">Address</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="Enter an address for the organization..."/></p>
+
+            <h4 class="intro-top-fancy">State</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="Enter your organization's state..."/></p>
+
+            <h4 class="intro-top-fancy">Phone</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="Enter a phone number..."/></p>
+
+            <h4 class="intro-top-fancy">Will you require any equipment?</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="List anything you might need to present..."/></p>
+            <div class="spacer"></div>
+        </div>
+
+        <div class="col-lg-6">
+            <h4 class="intro-top-fancy">What is your organization?</h4>
+            <p class="intro-top"><input class="register-input" type="text" placeholder="Enter your organization..."/></p>
+
+            <h4 class="intro-top-fancy">Type of organization?</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="Enter your organization's type..."/></p>
+
+            <h4 class="intro-top-fancy">City</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="Enter a city..."/></p>
+
+            <h4 class="intro-top-fancy">Zip Code</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="Enter your organization's zip code..."/></p>
+
+            <h4 class="intro-top-fancy">E-mail</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="Enter an e-mail address..."/></p>
+
+            <h4 class="intro-top-fancy">What will be the type of your display?</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="In order to exhibit, I will need..."/></p>
+
+            <div class="spacer"></div>
+        </div>
+
+        <div class="col-lg-6" style="clear:left;">
+            <div class="button register-button button-active-checkbox well well-lg">
+                <a class="block" target="_blank"></a>
+                Will you need access to water? ($10)
+            </div> 
+        </div>
+
+        <div class="col-lg-6">
+            <div class="button register-button button-active-checkbox well well-lg">
+                <a class="block" target="_blank"></a>
+                Will you need access to electricity? ($10)
+            </div> 
+        </div>
+
+    </div><!--.row-->
+
+    <div class="row">
+
+        <div class="spacer"></div>
+        <div class="col-lg-12">
+            <hr />
+            <p style="color:rgba(0,0,0,0.7);text-align:center;">Please note that there is a $75 registration fee to sign up as an exhibitor for STEM Day.</p>
+            <hr />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="col-lg-12" style="clear:left;">
+            <div class="button register-button button-active2 well well-lg checkbox2">
+                <a class="block" target="_blank" id="register-exhibitor"></a>
+                Register as an exhibitor
+            </div> 
+        </div>
+
+        <div class="col-lg-12">
+            <hr />
+                <p style="color:rgba(0,0,0,0.7);text-align:center;">For additional information, email <a href="mailto:stemday@cnu.edu">stemday@cnu.edu</a></p>
+            <hr />
+    </div>
+    </div>
+</div> <!-- /container -->
+        
+<script type="text/javascript" src="/data/jquery.min.js"></script>
+<script type="text/javascript" src="/data/bootstrap.min.js"></script>
+<script type="text/javascript" src="/data/data.js"></script>   
+<script>
+
+    var inputFields     = document.getElementsByClassName('register-input');
+
+    var registerButton  = document.getElementById('register-exhibitor');
+    registerButton.addEventListener('click', function() {
+        registerExhibitor();
+    });
+
+    function registerExhibitor() {
+        // grab all of the input fields 
+        for(var i = 0; i < inputFields.length; i++) {
+            console.log(inputFields.item(i));
+        }
+
+    }
+
+</script>
+</body>
+</html>
