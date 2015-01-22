@@ -15,7 +15,7 @@
 
 // declare application constants
 
-var SERVER_HOST 			= process.env.OPENSHIFT_NODEJS_IP 	|| 127.0.0.1;
+var SERVER_HOST 			= process.env.OPENSHIFT_NODEJS_IP 	|| '127.0.0.1';
 var SERVER_PORT				= process.env.OPENSHIFT_NODEJS_PORT || 8000;
 var SERVER_HEAD_OK			= 200;
 var SERVER_HEAD_NOTFOUND 	= 404;
@@ -149,6 +149,6 @@ function mainRequestHandler(request, response) {
 
 	// define global application server and bind to a specified port
 	application = http.createServer(mainRequestHandler);
-	application.listen(SERVER_PORT);
+	application.listen(SERVER_PORT, SERVER_HOST);
 
 })();
