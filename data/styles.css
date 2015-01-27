@@ -44,13 +44,32 @@ margin-bottom:20px;
 
 	p.intro-top select,p.intro select {
 		min-width:400px; background:transparent; border:0;
+		padding-top:10px;
+		display:block;
 		font-size:1.5em;
 		font-weight:200;
 		font-family:'Source Sans Pro';
 
+		margin-bottom:23px;
+
 		color:#aaa;
 	}
 
+
+.overlay-options-wrapper {
+	width:50%;
+	
+}
+
+.form-spacer {
+	width:400px;
+	display:block; 
+	border-color:rgb(142,142,142);
+	border-width:1px 0 0 0;
+	border-style:solid;
+
+	margin:15px 0 10px 0;
+}
 .spacer {
 width:400px; height:40px;
 }
