@@ -20,13 +20,16 @@ var SERVER_PORT				= process.env.OPENSHIFT_NODEJS_PORT || 8000;
 var SERVER_HEAD_OK			= 200;
 var SERVER_HEAD_NOTFOUND 	= 404;
 var SERVER_HEAD_ERROR 		= 500;
-var SERVER_RES_NOTFOUND		= '404. The file you are looking for could not be found.';
 var SERVER_RES_OK 			= '200. Server status: OK';
+var SERVER_RES_NOTFOUND		= '404. The file you are looking for could not be found.';
+var SERVER_RES_ERROR 		= '500. An invalid request was sent to the server.';
 
 // import node.js packages
 
 var fs 				= require('fs');
 var http 			= require('http');
+var https 			= require('https');
+var url 			= require('url');
 
 // begin application declarations
 
@@ -129,6 +132,93 @@ function handleRequestAsFileStream(request, response) {
 }
 
 /**
+ * Serves current request along with data from a specified api uri
+ */
+function handleRequestAsAPICall(request, response) {
+
+	var APIURI 			= request.url.split('/api/')[1];
+	var APIResponseData = '';
+
+	if(APIURI == '') {
+		response.writeHead(SERVER_HEAD_ERROR);
+		return response.end(SERVER_RES_ERROR);
+	}
+
+	https.get(APIURI, function(APIResponse) {
+
+		APIResponse.on('data', function(chunk) {
+			APIResponseData += chunk;
+		});
+
+		APIResponse.on('end', function() {
+			response.writeHead(SERVER_HEAD_OK);
+			response.end(APIResponseData);
+		});
+
+	}).on('error', function(error) {
+		console.log('<HTTP.Get> ' + error.message);
+		response.writeHead(SERVER_HEAD_ERROR);
+		response.end(APIURI);
+	});
+
+}
+
+/**
+ * POSTs current api request to endpoint uri and returns response to client
+ */
+function handleRequestAsPOSTAPICall(request, response) {
+
+	var APIURI 				= request.url.split('/api/post/')[1];
+	var URIComponents		= url.parse(APIURI);
+	var POSTDataFromClient 	= '';
+	var APIResponseData 	= '';
+
+	if(APIURI == '') {
+		response.writeHead(SERVER_HEAD_ERROR);
+		return response.end(SERVER_RES_ERROR);
+	}
+
+	// receive data to relay from client
+	request.on('data', function(chunk) {
+		POSTDataFromClient += chunk;
+	});
+
+	request.on('end', function() {
+
+		var APIPostRequest = https.request({
+
+			host 	: URIComponents.host,
+			path 	: URIComponents.path,
+			href 	: URIComponents.href,
+			method 	: 'POST',
+			headers : {
+				'Content-Type' : request.headers['content-type']
+			}
+
+		}, function(APIResponse) {
+
+			APIResponse.on('data', function(chunk) {
+				APIResponseData += chunk;
+			});
+
+			APIResponse.on('end', function() {
+
+				response.writeHead(SERVER_HEAD_OK, {
+					'Content-Type' : 'text/html',
+					'Authorization': 'OAuth njdlwvNt8j62sU_al_R92c6W'
+				});
+
+				console.log(APIResponseData);
+				response.end('API Request OK');
+
+			});
+
+		}).end(POSTDataFromClient);
+
+	});
+}
+
+/**
  * handle all initial application requests, assign routes, etc.
  */
 function mainRequestHandler(request, response) {
@@ -139,16 +229,20 @@ function mainRequestHandler(request, response) {
 		if(currentRequest.match(/^\/test(\/)?$/gi)) {
 			response.writeHead(SERVER_HEAD_OK);
 			response.end(SERVER_RES_OK);
+		} else if(currentRequest.match(/^\/api\/post\/(.*)/gi)) {
+			handleRequestAsPOSTAPICall(request, response);
+		} else if(currentRequest.match(/^\/api\/(.*)/gi)) {
+			handleRequestAsAPICall(request, response);
 		} else {
 			handleRequestAsFileStream(request, response);
 		}
 }
 
 // initialize application
-(function main() {
+(function main(application) {
 
 	// define global application server and bind to a specified port
 	application = http.createServer(mainRequestHandler);
 	application.listen(SERVER_PORT, SERVER_HOST);
 
-})();
+})(application);

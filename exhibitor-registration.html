@@ -16,6 +16,8 @@
 <link rel="apple-touch-icon" sizes="114x114" href="http://www.bootply.com/bootstrap/img/thumbs/apple-touch-icon-114x114.png">
 <link rel="stylesheet" href="/data/styles.css"/>
 
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
 </head>
     
     
@@ -130,10 +132,152 @@
         
 <script type="text/javascript" src="/data/jquery.min.js"></script>
 <script type="text/javascript" src="/data/bootstrap.min.js"></script>
-<script type="text/javascript" src="/data/data.js"></script>   
+<script type="text/javascript" src="/data/data.js"></script>
 <script>
 
     var totalApplicationFee     = 75;
+
+    // define Google Docs API variables and settings
+    var GoogleDocs = {
+
+        useServerAPICalls       : true,
+
+        APIVersion              : '3.0',
+        APIKey                  : 'AIzaSyBh8KtwWGuG2zGq3eRLX-mdjLQJeo8IXeY',
+        APIEndpoint             : 'https://www.googleapis.com/drive/v2/',
+        APISpreadSheetsEndpoint : 'https://spreadsheets.google.com/feeds/list/',
+        APIEntryContentType     : 'application/atom+xml',
+
+        OAuthEnpoint            : 'https://www.googleapis.com/auth/devstorage.read_write',
+
+        defaultSpreadSheetId    : '1OeO8BrZ6BlhA2AwoMpmWj_RIh1wGtCeyEFJWgpU9Hts'
+
+    };
+
+    // define Google Docs API methods
+
+    /**
+     * retrieves a document from Google Docs using its ID.
+     * if no ID is given, GoogleDocs.spreadsheetId is used.
+     *
+     * @param method    {String} id of google docs file
+     * @param uri       {String} endpoint url where the request should be made
+     * @param callback  {Function} function to be called after response is received
+     */
+    GoogleDocs.httpRequest      = function(method, uri, callback) {
+
+        if(!callback || typeof callback != 'function') {
+            callback = function() {};
+        }
+
+        if(GoogleDocs.useServerAPICalls) {
+            uri = '/api/' + uri;
+        }
+
+        // create a new asynchronous http request object
+        var http = new XMLHttpRequest();
+        http.open(method, uri, true);
+        http.send(null);
+
+        http.addEventListener('readystatechange', function() {
+            
+            if(this.readyState == 4) {
+                if(this.status == 200) {
+                    // send response to callee
+                    callback.call(this, null, this.responseText);
+                } else {
+                    // send error to callee
+                    callback.call(this, this.responseText);
+                }
+            }
+
+        });
+
+    }
+
+    /**
+     * retrieves a document from Google Docs using its ID.
+     * if no ID is given, GoogleDocs.spreadsheetId is used.
+     *
+     * @param fileID    {String}    id of google docs file
+     * @param callback  {Function}  function to be called after response is received
+     */
+    GoogleDocs.getFileMetaData  = function(fileID, callback) {
+
+        if(!fileID) {
+            fileID = GoogleDocs.defaultSpreadSheetId;
+        }
+
+        // handle case where only a callback function is passed
+        if(typeof fileID == 'function') {
+            callback    = fileID;
+            fileID      = GoogleDocs.defaultSpreadSheetId;
+        }
+
+        // create new http request
+        GoogleDocs.httpRequest('GET', GoogleDocs.APIEndpoint + 'files/' + fileID + '?key=' + GoogleDocs.APIKey + '&v=' + GoogleDocs.APIVersion, callback);
+
+    }
+
+    /**
+     * retrieves (cell) contents of a spreadsheet document from Google Docs using its ID.
+     * if no ID is given, GoogleDocs.spreadsheetId is used.
+     *
+     * @param fileID    {String}    id of google docs file
+     * @param callback  {Function}  function to be called after response is received
+     */
+    GoogleDocs.getSpreadsheetCells = function(fileID, callback) {
+
+        if(!fileID) {
+            fileID = GoogleDocs.defaultSpreadSheetId;
+        }
+
+        // handle case where only a callback function is passed
+        if(typeof fileID == 'function') {
+            callback    = fileID;
+            fileID      = GoogleDocs.defaultSpreadSheetId;
+        }
+
+        GoogleDocs.httpRequest('GET', GoogleDocs.APISpreadSheetsEndpoint + fileID + '/od6/public/full?alt=json', callback);
+
+    }
+
+    GoogleDocs.putSpreadSheetRow = function(fileID, rowContentObject, callback) {
+
+        // {row1Title:row1Content, row2Title:row2Content, ...}
+
+        if(!fileID) {
+            fileID = GoogleDocs.defaultSpreadSheetId;
+        }
+
+        // handle case where only a callback function is passed
+        if(typeof fileID == 'function') {
+            callback    = fileID;
+            fileID      = GoogleDocs.defaultSpreadSheetId;
+        }
+
+        var entry       = document.createElement('entry');
+        entry.setAttribute('xmlns'      , 'http://www.w3.org/2005/Atom');
+        entry.setAttribute('xmlns:gsx'  , 'http://schemas.google.com/spreadsheets/2006/extended');
+
+        var testRow         = document.createElement('gsx:testRow');
+        testRow.innerHTML   = 'this is a test row';
+
+        entry.appendChild(testRow);        
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/post/' + GoogleDocs.APISpreadSheetsEndpoint + fileID + '/od6/private/full', true);
+        xhr.setRequestHeader('Content-Type', 'application/atom+xml');
+        xhr.send(entry);
+        xhr.addEventListener('readystatechange', function() {
+            if(this.readyState == 4) {
+                console.log(this.responseText);
+            }
+        });
+
+    }
+
+    // define dom element references and styling options
 
     var inputFields             = document.getElementsByClassName('register-input');
     var checkboxDivInputs       = document.getElementsByClassName('button-active-checkbox');
@@ -144,9 +288,13 @@
         activeBackgroundColor : '#357ebd'
     };
 
+    // attach event listeners
+
     registerButton.addEventListener('click', function() {
         handleRegistration();
     });
+
+    inputFields.item(0).focus();
 
     for(var i = 0; i < checkboxDivInputs.length; i++) {
 
@@ -172,6 +320,8 @@
 
     }
 
+    // define registration functions
+
     function handleRegistration() {
 
         var allFieldsFilled = true;
@@ -186,7 +336,7 @@
 
         }
 
-        if(allFieldsFilled) {
+        if(!allFieldsFilled) {
             registerExhibitor();
         } else {
             // scroll page slowly back to registration form
@@ -199,6 +349,16 @@
     }
 
     function registerExhibitor() {
+        // test the Google Docs API
+        GoogleDocs.putSpreadSheetRow(function(error, data) {
+            
+            if(error) {
+                return console.log('<GoogleDocs> ERR: ' + error);
+            }
+
+            console.log(data);
+
+        });
 
     }
 

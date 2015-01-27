@@ -1,5 +1,15 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700);
 
+::-webkit-input-placeholder {
+color:rgb(128,128,128);
+}
+::-moz-placeholder {
+
+}
+:-moz-placeholder {
+
+}
+
 body {
 background:url(../img/bg.png) no-repeat 0 0 fixed; background-size:cover; font:400 16px 'Source Sans Pro';
 }
@@ -10,15 +20,22 @@ p.intro-top {
 margin-bottom:20px;
 }
 .intro-top-fancy {
-	font-weight:400;
+	font-weight:700;
 	font-family:'Source Sans Pro';
-	font-size:1.5em;
+	font-size:0.95em;
 }
 	p.intro-top input,p.intro input {
-		padding:10px; min-width:400px; background:transparent; border:0; color:rgb(0,0,0);
+		min-width:400px; background:transparent; border:0; color:rgb(0,0,0);
+		padding:10px;
+		margin:5px;
+
 		font-size:1.5em;
 		font-weight:200;
 		font-family:'Source Sans Pro';
+
+		border-color:rgb(142,142,142);
+		border-width:1px 0 0 0;
+		border-style:solid;
 	}
 
 	p.intro-top input:focus,p.intro input:focus,p.intro-top select:focus,p.intro select:focus {
@@ -85,7 +102,7 @@ background:url(../img/stem_logo.png) no-repeat center center; background-size:74
 	-moz-transform:rotate(-6deg);
 	}
 	.pic-right {
-	right:-90px; background:url(../img/thumbs/7.jpg) no-repeat 0 0; background-size:100%;
+	right:-90px; background:url(../img/thumbs/3.jpg) no-repeat 0 0; background-size:100%;
 	transform:rotate(6deg); border:5px solid rgba(228,230,229,0.9); height:200px;
 	-ms-transform:rotate(6deg); /* IE 9 */
 	-webkit-transform:rotate(6deg);

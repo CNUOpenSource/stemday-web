@@ -17,7 +17,7 @@ window.onload = function() {
 		errors:[],
 		slides:[],
 		processed:0,
-		size:8,
+		size:6,
 		slide:{
 			current:0,
 			add:function(amount,callback) {
