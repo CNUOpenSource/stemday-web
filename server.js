@@ -55,7 +55,8 @@ var dictionaryOfRoutes 	= {
 
 	'/'  					: 'index.html' 						,
 	'/register/exhibitor' 	: 'exhibitor-registration.html' 	,
-	'/register/participant' : 'participant-registration.html'
+	'/register/participant' : 'participant-registration.html'	,
+	'/register/success'		: 'successful-registration.html'	,
 
 };
 
@@ -166,7 +167,7 @@ function handleRequestAsAPICall(request, response) {
 /**
  * POSTs current api request to endpoint uri and returns response to client
  */
-function handleRequestAsPOSTAPICall(request, response) {
+function handleRequestAsAPIPOSTCall(request, response) {
 
 	var APIURI 				= request.url.split('/api/post/')[1];
 	var URIComponents		= url.parse(APIURI);
@@ -205,11 +206,10 @@ function handleRequestAsPOSTAPICall(request, response) {
 
 				response.writeHead(SERVER_HEAD_OK, {
 					'Content-Type' : 'text/html',
-					'Authorization': 'OAuth njdlwvNt8j62sU_al_R92c6W'
 				});
 
 				console.log(APIResponseData);
-				response.end('API Request OK');
+				response.end(APIResponseData);
 
 			});
 
@@ -230,7 +230,7 @@ function mainRequestHandler(request, response) {
 			response.writeHead(SERVER_HEAD_OK);
 			response.end(SERVER_RES_OK);
 		} else if(currentRequest.match(/^\/api\/post\/(.*)/gi)) {
-			handleRequestAsPOSTAPICall(request, response);
+			handleRequestAsAPIPOSTCall(request, response);
 		} else if(currentRequest.match(/^\/api\/(.*)/gi)) {
 			handleRequestAsAPICall(request, response);
 		} else {

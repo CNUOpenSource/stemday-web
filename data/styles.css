@@ -24,7 +24,7 @@ margin-bottom:20px;
 	font-family:'Source Sans Pro';
 	font-size:0.95em;
 }
-	p.intro-top input,p.intro input {
+	p.intro-top input,p.intro input,p.intro textarea {
 		min-width:400px; background:transparent; border:0; color:rgb(0,0,0);
 		padding:10px;
 		margin:5px;
@@ -38,7 +38,7 @@ margin-bottom:20px;
 		border-style:solid;
 	}
 
-	p.intro-top input:focus,p.intro input:focus,p.intro-top select:focus,p.intro select:focus {
+	p.intro-top input:focus,p.intro input:focus,p.intro-top select:focus,p.intro select:focus,p.intro textarea:focus {
 		outline:0;
 	}
 
@@ -53,6 +53,17 @@ margin-bottom:20px;
 		margin-bottom:23px;
 
 		color:#aaa;
+	}
+
+	p.intro span {
+		font-size:1.2em;
+		font-weight:200;
+	}
+
+	p.intro-top .radio-input,p.intro .radio-input {
+		margin:10px 0 10px 0;
+		width:40px;
+		background:transparent;
 	}
 
 

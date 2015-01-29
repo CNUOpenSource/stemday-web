@@ -16,8 +16,6 @@
 <link rel="apple-touch-icon" sizes="114x114" href="http://www.bootply.com/bootstrap/img/thumbs/apple-touch-icon-114x114.png">
 <link rel="stylesheet" href="/data/styles.css"/>
 
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-
 </head>
     
     
@@ -48,58 +46,114 @@
 
         <div class="col-lg-6">
             <h4 class="intro-top-fancy">Contact First Name</h4>
-            <p class="intro-top"><input class="register-input" type="text" placeholder="Enter your first name..."/></p>
+            <p class="intro-top"><input required="true" class="register-input" type="text" placeholder="Enter your first name..."/></p>
           
             <h4 class="intro-top-fancy">Contact Last Name</h4>
-            <p class="intro"><input class="register-input" type="text" placeholder="Enter your last name..."/></p>
+            <p class="intro"><input required class="register-input" type="text" placeholder="Enter your last name..."/></p>
 
             <h4 class="intro-top-fancy">Address</h4>
-            <p class="intro"><input class="register-input" type="text" placeholder="Enter an address for the organization..."/></p>
+            <p class="intro"><input required class="register-input" type="text" placeholder="Enter an address for the organization..."/></p>
 
             <h4 class="intro-top-fancy">State</h4>
-            <p class="intro"><input class="register-input" type="text" placeholder="Enter your organization's state..."/></p>
+            <p class="intro"><input required class="register-input" type="text" placeholder="Enter your organization's state..."/></p>
 
             <h4 class="intro-top-fancy">Phone</h4>
-            <p class="intro"><input class="register-input" type="text" placeholder="Enter a phone number..."/></p>
+            <p class="intro"><input required class="register-input" type="text" placeholder="Enter a phone number..."/></p>
 
             <h4 class="intro-top-fancy">Will you require any equipment?</h4>
             <p class="intro"><input class="register-input" type="text" placeholder="List anything you might need to present..."/></p>
+
+            <h4 class="intro-top-fancy">Are you interested in being a sponsor?</h4>
+            <div class="col-lg-12">
+                <hr />
+                <p style="color:rgba(0,0,0,0.7);text-align:left;">
+                    Gold, Platinum and Diamond sponsors will be invited to the catered Partnership breakfast celebrating those who have contributed to STEM on the peninsula (the breakfast will be held 9:30-10:30. STEM Community Day starts at 11:00)
+                </p>
+                <hr />
+            </div>
+            <div class="spacer"></div>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$100" /><span>$100 Bronze (access to the lounge supplied with drinks and snacks, logo on the website)</span></p>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$500" /><span>$500 Silver (Bronze + logo on all t- shirts)</span></p>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$1000" /><span>$1000 Gold (Silver + 2 invitations to breakfast)</span></p>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$2500" /><span>$2500 Platinum (Gold + 2 additonal invitations to breakfast, + special recognition on the printed program)</span></p>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$5000" /><span>$5000 Diamond (Platinum + Table of 8 at breakfast and presenting sponsorship on all promotional materials)</span></p>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" checked value="No, thanks!" /><span>No, thanks!</span></p>
+
             <div class="spacer"></div>
         </div>
 
         <div class="col-lg-6">
             <h4 class="intro-top-fancy">What is your organization?</h4>
-            <p class="intro-top"><input class="register-input" type="text" placeholder="Enter your organization..."/></p>
+            <p class="intro-top"><input required class="register-input" type="text" placeholder="Enter your organization..."/></p>
 
             <h4 class="intro-top-fancy">Type of organization?</h4>
-            <p class="intro"><input class="register-input" type="text" placeholder="Enter your organization's type..."/></p>
+            <div class="form-spacer"></div>
+            <p class="intro" style="position:relative;">
+                <input type="text" id="other-input-box" placeholder="Enter your organization's type..."/>
+                <select id="org-list">
+                    <option value="K12 School">K12 School</option>
+                    <option value="Commercial Business">Commercial Business</option>
+                    <option value="Non-Profit">Non-Profit</option>
+                    <option value="Government">Government</option>
+                    <option value="Health / Fitness">Health / Fitness</option>
+                    <option value="Military">Military</option>
+                    <option value="Higher Education">Higher Education</option>
+                    <option value="Other" class="show-extra">Other</option>
+                </select>
+            </p>
 
             <h4 class="intro-top-fancy">City</h4>
-            <p class="intro"><input class="register-input" type="text" placeholder="Enter a city..."/></p>
+            <p class="intro"><input required class="register-input" type="text" placeholder="Enter a city..."/></p>
 
             <h4 class="intro-top-fancy">Zip Code</h4>
-            <p class="intro"><input class="register-input" type="text" placeholder="Enter your organization's zip code..."/></p>
+            <p class="intro"><input required class="register-input" type="text" placeholder="Enter your organization's zip code..."/></p>
 
             <h4 class="intro-top-fancy">E-mail</h4>
-            <p class="intro"><input class="register-input" type="text" placeholder="Enter an e-mail address..."/></p>
+            <p class="intro"><input required class="register-input" type="text" placeholder="Enter an e-mail address..."/></p>
+
+            <h4 class="intro-top-fancy">Number Of Tables (Tables are 6 ft. long)</h4>
+            <p class="intro"><input required class="register-input" type="text" placeholder="Enter the number of tables required..."/></p>
+
+            <h4 class="intro-top-fancy">Would you like to provide materials for giveaway bags?</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="Brochures, pens, lanyards, etc..."/></p>
+
+            <h4 class="intro-top-fancy">Are you interested in donating prizes for a drawing?</h4>
+            <p class="intro"><input class="register-input" type="text" placeholder="Gift card, technology, etc..."/></p>
 
             <h4 class="intro-top-fancy">What will be the type of your display?</h4>
-            <p class="intro"><input class="register-input" type="text" placeholder="In order to exhibit, I will need..."/></p>
+            <div class="form-spacer"></div>
+            <p class="intro" style="position:relative;">
+                <!-- <input class="register-input" type="text" placeholder="In order to exhibit, I will need..."/> -->
+                <select id="display-list">
+                    <option value="Robotics">Robotics</option>
+                    <option value="Manufacturing / Technology">Manufacturing / Technology</option>
+                    <option value="Military / Police">Military / Police</option>
+                    <option value="Aeronautics">Aeronautics</option>
+                    <option value="Animal Life/ Biology">Animal Life / Biology</option>
+                    <option value="Physics">Physics</option>
+                    <option value="K12 Display">K12 Display</option>
+                    <option value="Other">Other (Please identify in Notes below)</option>
+                </select>
+
+            </p>
+
+            <h4 class="intro-top-fancy">Notes</h4>
+            <p class="intro"><textarea class="register-input" rows="5" cols="5" placeholder="In this space, please describe any needs that you have, or elaborate on any answers that you gave above"></textarea></p>
 
             <div class="spacer"></div>
         </div>
 
         <div class="col-lg-6" style="clear:left;">
             <div class="button register-button button-active-checkbox well well-lg" id="checkbox-water">
-                <a class="block" target="_blank"></a>
-                Will you need access to water? ($10)
+                <a class="block" target="_blank" id="Water"></a>
+                Will you need access to water?
             </div> 
         </div>
 
         <div class="col-lg-6">
             <div class="button register-button button-active-checkbox well well-lg" id="checkbox-electricity">
-                <a class="block" target="_blank" id="checkbox-electricity"></a>
-                Will you need access to electricity? ($10)
+                <a class="block" target="_blank" id="Electricity"></a>
+                Will you need access to electricity?
             </div> 
         </div>
 
@@ -110,7 +164,7 @@
         <div class="spacer"></div>
         <div class="col-lg-12">
             <hr />
-            <p style="color:rgba(0,0,0,0.7);text-align:center;">Please note that there is a $75 registration fee to sign up as an exhibitor for STEM Day.</p>
+            <p style="color:rgba(0,0,0,0.7);text-align:center;">Registration is free to participate STEM Day.</p>
             <hr />
         </div>
         <div class="spacer"></div>
@@ -135,22 +189,29 @@
 <script type="text/javascript" src="/data/data.js"></script>
 <script>
 
-    var totalApplicationFee     = 75;
+    // define application constants
+
+    var DEBUG_MODE                  = true;
+    var INPUT_INFORMATION_REQUIRED  = 'This information is required.';
+
+    var totalApplicationFee         = 0;
 
     // define Google Docs API variables and settings
     var GoogleDocs = {
 
-        useServerAPICalls       : true,
+        useNodeServerAPICalls   : true,
 
         APIVersion              : '3.0',
         APIKey                  : 'AIzaSyBh8KtwWGuG2zGq3eRLX-mdjLQJeo8IXeY',
         APIEndpoint             : 'https://www.googleapis.com/drive/v2/',
-        APISpreadSheetsEndpoint : 'https://spreadsheets.google.com/feeds/list/',
+        APISpreadsheetsEndpoint : 'https://spreadsheets.google.com/feeds/list/',
         APIEntryContentType     : 'application/atom+xml',
+        APIScriptsEndpoint      : 'https://script.google.com/a/macros/cnu.edu/s/',
 
-        OAuthEnpoint            : 'https://www.googleapis.com/auth/devstorage.read_write',
+        defaultScriptID         : 'AKfycbzUCfwk5WF6qlpRYQbCWPlOzouz2ZTHk6nmE-o2ZDw',
+        defaultSpreadSheetId    : '1OeO8BrZ6BlhA2AwoMpmWj_RIh1wGtCeyEFJWgpU9Hts',
 
-        defaultSpreadSheetId    : '1OeO8BrZ6BlhA2AwoMpmWj_RIh1wGtCeyEFJWgpU9Hts'
+        OAuthEnpoint            : 'https://www.googleapis.com/auth/devstorage.read_write'
 
     };
 
@@ -170,7 +231,7 @@
             callback = function() {};
         }
 
-        if(GoogleDocs.useServerAPICalls) {
+        if(GoogleDocs.useNodeServerAPICalls) {
             uri = '/api/' + uri;
         }
 
@@ -238,42 +299,42 @@
             fileID      = GoogleDocs.defaultSpreadSheetId;
         }
 
-        GoogleDocs.httpRequest('GET', GoogleDocs.APISpreadSheetsEndpoint + fileID + '/od6/public/full?alt=json', callback);
+        GoogleDocs.httpRequest('GET', GoogleDocs.APISpreadsheetsEndpoint + fileID + '/od6/public/full?alt=json', callback);
 
     }
 
-    GoogleDocs.putSpreadSheetRow = function(fileID, rowContentObject, callback) {
+    GoogleDocs.putSpreadsheetRow = function(fileID, rowContentObject, callback) {
 
         // {row1Title:row1Content, row2Title:row2Content, ...}
+        var parameters = '';
 
         if(!fileID) {
-            fileID = GoogleDocs.defaultSpreadSheetId;
+            fileID = GoogleDocs.defaultScriptID;
         }
 
         // handle case where only a callback function is passed
         if(typeof fileID == 'function') {
             callback    = fileID;
-            fileID      = GoogleDocs.defaultSpreadSheetId;
+            fileID      = GoogleDocs.defaultScriptID;
         }
 
-        var entry       = document.createElement('entry');
-        entry.setAttribute('xmlns'      , 'http://www.w3.org/2005/Atom');
-        entry.setAttribute('xmlns:gsx'  , 'http://schemas.google.com/spreadsheets/2006/extended');
+        // handle case where an object with parameters is passed
+        if(typeof fileID == 'object' && typeof rowContentObject == 'function') {
 
-        var testRow         = document.createElement('gsx:testRow');
-        testRow.innerHTML   = 'this is a test row';
+            callback            = rowContentObject;
+            rowContentObject    = fileID;
+            fileID              = GoogleDocs.defaultScriptID;
+            parameters          = '?';
 
-        entry.appendChild(testRow);        
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/api/post/' + GoogleDocs.APISpreadSheetsEndpoint + fileID + '/od6/private/full', true);
-        xhr.setRequestHeader('Content-Type', 'application/atom+xml');
-        xhr.send(entry);
-        xhr.addEventListener('readystatechange', function() {
-            if(this.readyState == 4) {
-                console.log(this.responseText);
+            for(var i in rowContentObject) {
+                parameters += i + '=' + rowContentObject[i] + '&';
             }
-        });
+
+            parameters = parameters.substring(0, parameters.length - 1);
+
+        }
+
+        GoogleDocs.httpRequest('GET', GoogleDocs.APIScriptsEndpoint + fileID + '/exec' + parameters, callback);
 
     }
 
@@ -281,12 +342,46 @@
 
     var inputFields             = document.getElementsByClassName('register-input');
     var checkboxDivInputs       = document.getElementsByClassName('button-active-checkbox');
+    var fieldsThatShowExtra     = document.getElementsByClassName('show-extra');
+    var sponsorRadioInputs      = document.getElementsByClassName('radio-input');
+    var otherDivInput           = document.getElementById('other-input-box');
+    var orgListInput            = document.getElementById('org-list');
+    var displayListInput        = document.getElementById('display-list');
     var registerButton          = document.getElementById('register-exhibitor');
     var applicationPriceOutput  = document.getElementById('total-application-price-output');
+
+    // input states
+    var registrationParameters      = {};
+    var divInputWaterChecked        = false;
+    var divInputElectricityChecked  = false;
+    var divInputOtherChecked        = false;
+    var radioInputSponsorChecked    = false;
+    var radioInputSponsorValue      = 'No, thanks!';
 
     var checkboxDivInputOptions = {
         activeBackgroundColor : '#357ebd'
     };
+
+    orgListInput.addEventListener('change', function() {
+
+        if(this.value == 'Other') {
+
+            otherDivInput.required = true;
+
+            this.style.opacity = '0';
+            this.style.zIndex = -1;
+
+            divInputOtherChecked = true;
+
+            otherDivInput.style.display = 'block';
+            otherDivInput.style.zIndex = '999';
+
+        }
+
+    });
+
+    // focus input field for the user
+    inputFields.item(0).focus();
 
     // attach event listeners
 
@@ -294,29 +389,94 @@
         handleRegistration();
     });
 
-    inputFields.item(0).focus();
+    // add event listeners for radio inputs
+    for(var i = 0; i < sponsorRadioInputs.length; i++) {
+        sponsorRadioInputs.item(i).addEventListener('click', function() {
+            radioInputSponsorChecked    = true;
+            radioInputSponsorValue      = this.value;
+        });
+    }
 
+    // add event listeners for form inputs that require extra options / show the overlay
+    for(var i = 0; i < fieldsThatShowExtra.length; i++) {
+        fieldsThatShowExtra.item(i).addEventListener('click', function() {
+            displayOverlayWithOptions();
+        });
+    }
+
+    // add event listeners for utility buttons
     for(var i = 0; i < checkboxDivInputs.length; i++) {
 
         checkboxDivInputs.item(i).addEventListener('click', function() {
 
             if(!this.isChecked) {
 
-                totalApplicationFee += 10;
-                applicationPriceOutput.innerHTML = ' ($' + totalApplicationFee + ')';
+                applicationPriceOutput.innerHTML    = ' ($' + totalApplicationFee + ')';
 
-                this.isChecked = true;
-                this.style.background = checkboxDivInputOptions.activeBackgroundColor;
+                this.isChecked                      = true;
+                this.style.background               = checkboxDivInputOptions.activeBackgroundColor;
+
+                if(this.id == 'checkbox-water') {
+                    divInputWaterChecked = true;
+                } else if(this.id == 'checkbox-electricity') {
+                    divInputElectricityChecked = true;
+                }
+
                 return;
             }
 
-            this.isChecked = false;
-            this.style.background = '';
+            this.isChecked          = false;
+            this.style.background   = '';
 
-            totalApplicationFee -= 10;
+            if(this.id == 'checkbox-water') {
+                divInputWaterChecked = false;
+            } else if(this.id == 'checkbox-electricity') {
+                divInputElectricityChecked = false;
+            }
+
             applicationPriceOutput.innerHTML = ' ($' + totalApplicationFee + ')';
 
         });
+
+    }
+
+    function displayOverlayWithOptions(options) {
+
+    }
+
+    // define and execute test cases if application is in debug mode
+    if(DEBUG_MODE) {
+
+        (function testActionPrefillFormData() {
+
+            // fname
+            inputFields.item(0).value = 'John';
+            // lname
+            inputFields.item(1).value = 'Doe';
+            // address
+            inputFields.item(2).value = 'Sample Address';
+            // state
+            inputFields.item(3).value = 'Virginia';
+            // phone
+            inputFields.item(4).value = '(804) 555 5555';
+            // equipment
+            inputFields.item(5).value = 'No equipment needed';
+            // org
+            inputFields.item(6).value = 'Organization Name';
+            // city
+            inputFields.item(7).value = 'Richmond';
+            // zip code
+            inputFields.item(8).value = '23229';
+            // email
+            inputFields.item(9).value = 'sample.email.12@cnu.edu';
+            // # tables
+            inputFields.item(10).value = '3';
+            // giveaways
+            inputFields.item(11).value = 'Nope';
+            // drawing
+            inputFields.item(13).value = 'Notes';
+
+        })();
 
     }
 
@@ -324,20 +484,93 @@
 
     function handleRegistration() {
 
-        var allFieldsFilled = true;
+        var allFieldsFilled         = true;
+        var i                       = 0;
 
         // grab all of the input fields 
-        for(var i = 0; i < inputFields.length; i++) {
-            
+        for(i = 0; i < inputFields.length && allFieldsFilled; i++) {
+
             if(inputFields.item(i).value == '') {
-                inputFields.item(i).placeholder = 'This information is required.';
-                allFieldsFilled                 = false;
+
+                if(inputFields.item(i).required) {
+                    inputFields.item(i).placeholder = INPUT_INFORMATION_REQUIRED;
+                    allFieldsFilled                 = false;
+                } else {
+                    registrationParameters['param' + (i + 1)] = 'None';
+                }
+
+            } else {
+                registrationParameters['param' + (i + 1)] = inputFields.item(i).value;
             }
 
         }
 
-        if(!allFieldsFilled) {
-            registerExhibitor();
+        if(divInputOtherChecked) {
+
+            if(otherDivInput.value == '') {
+                otherDivInput.placeholder = INPUT_INFORMATION_REQUIRED;
+                allFieldsFilled = false;
+            }
+
+            registrationParameters['param' + (++i)] = otherDivInput.value;
+
+        } else {
+            registrationParameters['param' + (++i)] = orgListInput.value;
+        }
+
+        if(allFieldsFilled) {
+
+            // add sponsorship response
+            registrationParameters['param' + (++i)] = radioInputSponsorValue;
+
+            // add display type response
+            registrationParameters['param' + (++i)] = displayListInput.value;
+
+            // add utility response
+            registrationParameters['param' + (++i)] = 'No water needed';
+            if(divInputWaterChecked) {
+                registrationParameters['param' + (i)] = 'I will need access to water.';
+            }
+
+            // add utility response
+            registrationParameters['param' + (++i)] = 'No electricity needed';
+            if(divInputElectricityChecked) {
+                registrationParameters['param' + (i)] = 'I will need access to electricity.';
+            }
+
+            // organize parameters to match Google Sheets headers
+            var parameterOrderKey = [
+
+                'param7'    ,       // org
+                'param15'   ,       // org. type
+                'param1'    ,       // fname
+                'param2'    ,       // lname
+                'param10'   ,       // email
+                'param3'    ,       // address
+                'param4'    ,       // state
+                'param8'    ,       // city
+                'param9'    ,       // zip code
+                'param5'    ,       // phone
+                'param17'   ,       // display type
+                'param6'    ,       // equipment
+                'param11'   ,       // number of tables
+                'param12'   ,       // giveaways
+                'param13'   ,       // prize drawing info
+                'param18'   ,       // water access
+                'param19'   ,       // energy access
+                'param16'   ,       // sponsorship signup
+                'param14'           // notes
+
+            ];
+
+            var registrationParametersInOrder = {};
+
+            for(var i = 0; i < parameterOrderKey.length; i++) {
+                registrationParametersInOrder['param' + (i + 1)] = registrationParameters[parameterOrderKey[i]];
+            }
+
+            registerExhibitorWithParameters(registrationParametersInOrder);
+
         } else {
             // scroll page slowly back to registration form
             $('html,body').animate({
@@ -348,15 +581,16 @@
 
     }
 
-    function registerExhibitor() {
-        // test the Google Docs API
-        GoogleDocs.putSpreadSheetRow(function(error, data) {
+    function registerExhibitorWithParameters(parameters) {
+
+        // tell Google Docs API to add data to spreadsheet
+        GoogleDocs.putSpreadsheetRow(parameters, function(error, data) {
             
             if(error) {
                 return console.log('<GoogleDocs> ERR: ' + error);
             }
 
-            console.log(data);
+            window.location.href = '/register/success';
 
         });
 
