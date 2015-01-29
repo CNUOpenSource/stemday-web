@@ -53,10 +53,11 @@ var dictionaryOfMimeTypes = {
 
 var dictionaryOfRoutes 	= {
 
-	'/'  					: 'index.html' 						,
-	'/register/exhibitor' 	: 'exhibitor-registration.html' 	,
-	'/register/participant' : 'participant-registration.html'	,
-	'/register/success'		: 'successful-registration.html'	,
+	'/'  							: 'index.html' 						,
+	'/register/exhibitor' 			: 'exhibitor-registration.html' 	,
+	'/register/participant' 		: 'participant-registration.html'	,
+	'/register/exhibitor/success'	: 'successful-registration.html'	,
+	'/register/participant/success' : 'successful-registration.html'
 
 };
 

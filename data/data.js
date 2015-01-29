@@ -2,6 +2,158 @@
  * juanvallejo
  * @version 1.0
  */
+
+// define application constants
+
+ var DEBUG_MODE                  = true;
+ var INPUT_INFORMATION_REQUIRED  = 'This information is required.';
+
+ // define google drive functions
+
+ // define Google Docs API variables and settings
+var GoogleDocs = {
+
+    useNodeServerAPICalls   : true,
+
+    APIVersion              : '3.0',
+    APIKey                  : 'AIzaSyBh8KtwWGuG2zGq3eRLX-mdjLQJeo8IXeY',
+    APIEndpoint             : 'https://www.googleapis.com/drive/v2/',
+    APISpreadsheetsEndpoint : 'https://spreadsheets.google.com/feeds/list/',
+    APIEntryContentType     : 'application/atom+xml',
+    APIScriptsEndpoint      : 'https://script.google.com/a/macros/cnu.edu/s/',
+
+    defaultScriptID         : 'AKfycbzUCfwk5WF6qlpRYQbCWPlOzouz2ZTHk6nmE-o2ZDw',
+    defaultSpreadSheetId    : '1OeO8BrZ6BlhA2AwoMpmWj_RIh1wGtCeyEFJWgpU9Hts',
+
+    OAuthEnpoint            : 'https://www.googleapis.com/auth/devstorage.read_write'
+
+};
+
+// define Google Docs API methods
+
+/**
+ * retrieves a document from Google Docs using its ID.
+ * if no ID is given, GoogleDocs.spreadsheetId is used.
+ *
+ * @param method    {String} id of google docs file
+ * @param uri       {String} endpoint url where the request should be made
+ * @param callback  {Function} function to be called after response is received
+ */
+GoogleDocs.httpRequest      = function(method, uri, callback) {
+
+    if(!callback || typeof callback != 'function') {
+        callback = function() {};
+    }
+
+    if(GoogleDocs.useNodeServerAPICalls) {
+        uri = '/api/' + uri;
+    }
+
+    // create a new asynchronous http request object
+    var http = new XMLHttpRequest();
+    http.open(method, uri, true);
+    http.send(null);
+
+    http.addEventListener('readystatechange', function() {
+        
+        if(this.readyState == 4) {
+            if(this.status == 200) {
+                // send response to callee
+                callback.call(this, null, this.responseText);
+            } else {
+                // send error to callee
+                callback.call(this, this.responseText);
+            }
+        }
+
+    });
+
+}
+
+/**
+ * retrieves a document from Google Docs using its ID.
+ * if no ID is given, GoogleDocs.spreadsheetId is used.
+ *
+ * @param fileID    {String}    id of google docs file
+ * @param callback  {Function}  function to be called after response is received
+ */
+GoogleDocs.getFileMetaData  = function(fileID, callback) {
+
+    if(!fileID) {
+        fileID = GoogleDocs.defaultSpreadSheetId;
+    }
+
+    // handle case where only a callback function is passed
+    if(typeof fileID == 'function') {
+        callback    = fileID;
+        fileID      = GoogleDocs.defaultSpreadSheetId;
+    }
+
+    // create new http request
+    GoogleDocs.httpRequest('GET', GoogleDocs.APIEndpoint + 'files/' + fileID + '?key=' + GoogleDocs.APIKey + '&v=' + GoogleDocs.APIVersion, callback);
+
+}
+
+/**
+ * retrieves (cell) contents of a spreadsheet document from Google Docs using its ID.
+ * if no ID is given, GoogleDocs.spreadsheetId is used.
+ *
+ * @param fileID    {String}    id of google docs file
+ * @param callback  {Function}  function to be called after response is received
+ */
+GoogleDocs.getSpreadsheetCells = function(fileID, callback) {
+
+    if(!fileID) {
+        fileID = GoogleDocs.defaultSpreadSheetId;
+    }
+
+    // handle case where only a callback function is passed
+    if(typeof fileID == 'function') {
+        callback    = fileID;
+        fileID      = GoogleDocs.defaultSpreadSheetId;
+    }
+
+    GoogleDocs.httpRequest('GET', GoogleDocs.APISpreadsheetsEndpoint + fileID + '/od6/public/full?alt=json', callback);
+
+}
+
+GoogleDocs.putSpreadsheetRow = function(fileID, rowContentObject, callback) {
+
+    // {row1Title:row1Content, row2Title:row2Content, ...}
+    var parameters = '';
+
+    if(!fileID) {
+        fileID = GoogleDocs.defaultScriptID;
+    }
+
+    // handle case where only a callback function is passed
+    if(typeof fileID == 'function') {
+        callback    = fileID;
+        fileID      = GoogleDocs.defaultScriptID;
+    }
+
+    // handle case where an object with parameters is passed
+    if(typeof fileID == 'object' && typeof rowContentObject == 'function') {
+
+        callback            = rowContentObject;
+        rowContentObject    = fileID;
+        fileID              = GoogleDocs.defaultScriptID;
+
+    }
+
+    parameters = '?';
+
+    for(var i in rowContentObject) {
+		parameters += i + '=' + rowContentObject[i] + '&';
+	}
+
+	// remove last '&' symbol from parameters
+	parameters = parameters.substring(0, parameters.length - 1);
+
+    GoogleDocs.httpRequest('GET', GoogleDocs.APIScriptsEndpoint + fileID + '/exec' + parameters, callback);
+
+}
+
 window.onload = function() {
 	//slider logic
 	var slider = {
