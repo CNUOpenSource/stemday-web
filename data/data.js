@@ -5,7 +5,7 @@
 
 // define application constants
 
- var DEBUG_MODE                  = true;
+ var DEBUG_MODE                  = false;
  var INPUT_INFORMATION_REQUIRED  = 'This information is required.';
 
  // define google drive functions
