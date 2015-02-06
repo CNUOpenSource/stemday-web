@@ -71,14 +71,21 @@ var dictionaryOfRoutes 	= {
  */
 function requestRouter(request, response) {
 
+	var requestURL = request.url;
+ 
+	// modify font requests that have queries in url
+	if(requestURL.match(/\.(.*)(\?)/gi)) {
+		requestURL = requestURL.split('?')[0];
+	}
+ 
 	// return default request by default
-	var requestToHandle	= request.url;
-	var routedRequest 	= request.url;
-
+	var requestToHandle	= requestURL;
+	var routedRequest 	= requestURL;
+ 
 	if(dictionaryOfRoutes.hasOwnProperty(requestToHandle)) {
 		routedRequest = dictionaryOfRoutes[requestToHandle];
 	}
-
+ 
 	return routedRequest;
 
 }

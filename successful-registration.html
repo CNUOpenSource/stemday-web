@@ -14,7 +14,7 @@
 <link rel="apple-touch-icon" href="http://www.bootply.com/bootstrap/img/thumbs/apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="72x72" href="http://www.bootply.com/bootstrap/img/thumbs/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114" href="http://www.bootply.com/bootstrap/img/thumbs/apple-touch-icon-114x114.png">
-<link rel="stylesheet" href="/data/styles.css"/>
+<link rel="stylesheet" href="data/styles.css"/>
 
 </head>
     
@@ -75,16 +75,16 @@
     </div>
 </div> <!-- /container -->
         
-<script type="text/javascript" src="/data/jquery.min.js"></script>
-<script type="text/javascript" src="/data/bootstrap.min.js"></script>
-<script type="text/javascript" src="/data/data.js"></script>
+<script type="text/javascript" src="data/jquery.min.js"></script>
+<script type="text/javascript" src="data/bootstrap.min.js"></script>
+<script type="text/javascript" src="data/data.js"></script>
 <script>
 
     var registrantType = document.getElementById('registrant-type');
 
-    if(window.location.href.split('/register/')[1] == 'exhibitor/success') {
+    if(window.location.href.split('?')[1] == 'type=exhibitor') {
         registrantType.innerHTML = 'an exhibitor';
-    } else if(window.location.href.split('/register/')[1] == 'participant/success') {
+    } else if(window.location.href.split('?')[1] == 'type=participant') {
         registrantType.innerHTML = 'a participant';
     } else {
         document.getElementById('message').innerHTML = 'An error happened somewhere, don\'t worry though, your results have been safely stored.';

@@ -153,14 +153,14 @@
     <div class="col-lg-6" id="register" style="clear:left;">
     <hr />
         <div class="button register-button button-active well well-lg">
-            <a href="http://stemday.cnuapps.me/register/exhibitor" class="block" id="block-link-1"></a>
+            <a href="exhibitor-registration.html" class="block" id="block-link-1"></a>
             Exhibitor Registration
         </div>
     </div>
     <div class="col-lg-6">
     <hr />
         <div class="button register-button button-active2 well well-lg">
-            <a href="http://stemday.cnuapps.me/register/participant" class="block" id="block-link-2"></a>
+            <a href="participant-registration.html" class="block" id="block-link-2"></a>
             Participant Registration
         </div>
     </div>
@@ -179,7 +179,7 @@
 <script type="text/javascript" src="data/bootstrap.min.js"></script>
 <script type="text/javascript" src="data/data.js"></script>
 <script>
-if(DEBUG_MODE) {
+if(DEBUG_MODE == null) {
     var anchorLinks = document.getElementsByTagName('a');
     for(var i = 0; i < anchorLinks.length; i++) {
         anchorLinks.item(i).addEventListener('click', function(e) {
