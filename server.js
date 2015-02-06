@@ -9,7 +9,8 @@
 * @author juanvallejo
 * @date 1/22/15
 *
-* Small server application written in javascript to test the hosting of stem day website and signup forms
+* Small server application written in javascript to test the hosting of stem day website and signup forms.
+* Can be used for pretty much any app though.
 *
 **/
 

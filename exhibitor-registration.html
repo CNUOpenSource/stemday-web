@@ -48,8 +48,8 @@
             <h4 class="intro-top-fancy">Contact First Name</h4>
             <p class="intro-top"><input required="true" class="register-input" type="text" placeholder="Enter your first name..."/></p>
           
-            <h4 class="intro-top-fancy">Contact Last Name</h4>
-            <p class="intro"><input required class="register-input" type="text" placeholder="Enter your last name..."/></p>
+            <h4 class="intro-top-fancy">What is your organization?</h4>
+            <p class="intro-top"><input required class="register-input" type="text" placeholder="Enter your organization..."/></p>
 
             <h4 class="intro-top-fancy">Address</h4>
             <p class="intro"><input required class="register-input" type="text" placeholder="Enter an address for the organization..."/></p>
@@ -72,7 +72,7 @@
                 <hr />
             </div>
             <div class="spacer"></div>
-            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$100" /><span>$100 Bronze (access to the lounge supplied with drinks and snacks, logo on the website)</span></p>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$250" /><span>$250 Bronze (access to the lounge supplied with drinks and snacks, logo on the website)</span></p>
             <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$500" /><span>$500 Silver (Bronze + logo on all t- shirts)</span></p>
             <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$1000" /><span>$1000 Gold (Silver + 2 invitations to breakfast)</span></p>
             <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$2500" /><span>$2500 Platinum (Gold + 2 additonal invitations to breakfast, + special recognition on the printed program)</span></p>
@@ -83,8 +83,8 @@
         </div>
 
         <div class="col-lg-6">
-            <h4 class="intro-top-fancy">What is your organization?</h4>
-            <p class="intro-top"><input required class="register-input" type="text" placeholder="Enter your organization..."/></p>
+            <h4 class="intro-top-fancy">Contact Last Name</h4>
+            <p class="intro"><input required class="register-input" type="text" placeholder="Enter your last name..."/></p>
 
             <h4 class="intro-top-fancy">Type of organization?</h4>
             <div class="form-spacer"></div>
@@ -186,6 +186,7 @@
         
 <script type="text/javascript" src="/data/jquery.min.js"></script>
 <script type="text/javascript" src="/data/bootstrap.min.js"></script>
+<script type="text/javascript" src="/data/placeholders.min.js"></script>
 <script type="text/javascript" src="/data/data.js"></script>
 <script>
 
@@ -307,7 +308,7 @@
             // fname
             inputFields.item(0).value = 'John';
             // lname
-            inputFields.item(1).value = 'Doe';
+            inputFields.item(1).value = 'Organization Name';
             // address
             inputFields.item(2).value = 'Sample Address';
             // state
@@ -317,7 +318,7 @@
             // equipment
             inputFields.item(5).value = 'No equipment needed';
             // org
-            inputFields.item(6).value = 'Organization Name';
+            inputFields.item(6).value = 'Doe';
             // city
             inputFields.item(7).value = 'Richmond';
             // zip code
@@ -396,10 +397,10 @@
             // organize parameters to match Google Sheets headers
             var parameterOrderKey = [
 
-                'param7'    ,       // org
+                'param2'    ,       // lname
                 'param15'   ,       // org. type
                 'param1'    ,       // fname
-                'param2'    ,       // lname
+                'param7'    ,       // org
                 'param10'   ,       // email
                 'param3'    ,       // address
                 'param4'    ,       // state
