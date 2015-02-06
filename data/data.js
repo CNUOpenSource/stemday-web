@@ -5,12 +5,17 @@
 
 // define application constants
 
- var DEBUG_MODE                  = false;
- var INPUT_INFORMATION_REQUIRED  = 'This information is required.';
+var DEBUG_MODE                  = false;
+var INPUT_INFORMATION_REQUIRED  = 'This information is required.';
 
- // define google drive functions
+if(window.location.hostname == 'localhost') {
+	console.log('DEBUG MODE');
+	DEBUG_MODE = true;
+}
 
- // define Google Docs API variables and settings
+// define google drive functions
+
+// define Google Docs API variables and settings
 var GoogleDocs = {
 
     useNodeServerAPICalls   : true,
