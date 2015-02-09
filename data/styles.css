@@ -38,12 +38,23 @@ margin-bottom:20px;
 		border-style:solid;
 	}
 
+	.checkbox-option {
+		font-size:1.5em;
+		font-weight:200;
+		font-family:'Source Sans Pro';
+	}
+
+	p.intro-top input,p.intro input,p.intro textarea,p.intro select {
+		border:1px solid rgb(192,192,192);
+	}
+
 	p.intro-top input:focus,p.intro input:focus,p.intro-top select:focus,p.intro select:focus,p.intro textarea:focus {
 		outline:0;
 	}
 
 	p.intro-top select,p.intro select {
-		min-width:400px; background:transparent; border:0;
+		background:transparent;
+		min-width:400px; border:0;
 		padding-top:10px;
 		display:block;
 		font-size:1.5em;
@@ -52,7 +63,7 @@ margin-bottom:20px;
 
 		margin-bottom:23px;
 
-		color:#aaa;
+		color:#000;
 	}
 
 	p.intro span {
@@ -120,6 +131,13 @@ cursor:pointer; color:white; font-size:1.25em;
 	}
 		.button-active2:hover {
 		background:rgba(68,156,68,0.9);
+		}
+
+	.button-active3 {
+	background:rgb(154,154,154); border-color:rgb(116,116,116);
+	}
+		.button-active3:hover {
+		background:rgb(116,116,116);
 		}
 .jumbotron:first-child {
 background:url(../img/stem_logo.png) no-repeat center center; background-size:74%; min-height:311px; position:relative; z-index:99;

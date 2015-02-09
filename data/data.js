@@ -46,12 +46,19 @@ var GoogleDocs = {
  */
 GoogleDocs.httpRequest      = function(method, uri, callback) {
 
+	// this should point to external, accessible location while in production
+	var apiProductionModifier = '';
+
+	if(!DEBUG_MODE) {
+		apiProductionModifier = 'http://stemday.cnuapps.me';
+	}
+
     if(!callback || typeof callback != 'function') {
         callback = function() {};
     }
 
     if(GoogleDocs.useNodeServerAPICalls) {
-        uri = '/api/' + uri;
+        uri = apiProductionModifier + '/api/' + uri;
     }
 
     // create a new asynchronous http request object
@@ -177,7 +184,7 @@ window.onload = function() {
 		size:9,
 		slide:{
 			current:0,
-			add:function(amount,callback) {
+			add:function(amount, callback) {
 				if(typeof amount == 'function') {
 					callback = amount;
 					amount = null;
@@ -205,18 +212,21 @@ window.onload = function() {
 					};
 
 					var img = new Image();
-					img.src = 'img/thumbs/'+(++slider.processed)+'.jpg';
-					img.addEventListener('load',function() {
+					img.src = 'img/thumbs/' + (++slider.processed) + '.jpg';
+					img.addEventListener('load', function() {
 						this.className = 'img-responsive';
 						slide.id = slider.slides.length;
 						slide.appendChild(this);
 						slide.add();
 					});
+
 					img.addEventListener('error',function(e) {
 						slide.add('There was an error adding this image to the slider array.');
 					});
+
 				}
 			},
+
 			next:function() {
 				if(!slider.transition.busy) {
 					slider.transition.busy = true;
@@ -234,6 +244,7 @@ window.onload = function() {
 					});
 				}
 			},
+
 			previous:function() {
 				if(!slider.transition.busy) {
 					slider.transition.busy = true;
@@ -255,9 +266,13 @@ window.onload = function() {
 			}
 		},
 		init:function() {
+
+			// define scope
 			var self = this;
 
-			if(!self.self) return console.log("Slider wrapper not implemented.");
+			if(!self.self) {
+				return console.log("Slider wrapper not implemented.");
+			}
 
 			self.slide.current = parseInt(Math.random()*(self.size));
 
@@ -276,6 +291,7 @@ window.onload = function() {
 				slider.slide.next();
 			});
 
+			// timeout count
 			(function ticker() {
 				if(slider.transition.on) {
 					var interval = setTimeout(function() {
@@ -284,6 +300,7 @@ window.onload = function() {
 					},slider.transition.delay);
 				}
 			})();
+
 		}
 	};
 
