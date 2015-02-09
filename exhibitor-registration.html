@@ -6,7 +6,7 @@
 <title>STEM Community Day - Exhibitor Registration</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<link href="/data/bootstrap.min.css" rel="stylesheet">
+<link href="data/bootstrap.min.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -25,7 +25,7 @@
   <div class="container">
     <a class="navbar-brand">STEM</a>
     <ul class="nav navbar-nav ">
-        <li><a href="/">Home</a></li>
+        <li><a href="./">Home</a></li>
         <li><a href="mailto:stemday@cnu.edu">Contact</a></li>
         <li class="divider-vertical"></li>
     </ul>
@@ -45,11 +45,12 @@
     <div class="row" id="registration-information">
 
         <div class="col-lg-6">
+
             <h4 class="intro-top-fancy">Contact First Name</h4>
             <p class="intro-top"><input required="true" tabindex="1" class="register-input" type="text" placeholder="Enter your first name..."/></p>
           
-            <h4 class="intro-top-fancy">What is your organization?</h4>
-            <p class="intro-top"><input required class="register-input" tabindex="3" type="text" placeholder="Enter your organization..."/></p>
+            <h4 class="intro-top-fancy">Contact Last Name</h4>
+            <p class="intro"><input required class="register-input" tabindex="2" type="text" placeholder="Enter your last name..."/></p>
 
             <h4 class="intro-top-fancy">Address</h4>
             <p class="intro"><input required class="register-input" tabindex="5" type="text" placeholder="Enter an address for the organization..."/></p>
@@ -73,18 +74,19 @@
             </div>
             <div class="spacer"></div>
             <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$250" /><span>$250 Bronze (access to the lounge supplied with drinks and snacks, logo on the website)</span></p>
-            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$500" /><span>$500 Silver (Bronze + logo on all t- shirts)</span></p>
-            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$1000" /><span>$1000 Gold (Silver + 2 invitations to breakfast)</span></p>
-            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$2500" /><span>$2500 Platinum (Gold + 2 additonal invitations to breakfast, + special recognition on the printed program)</span></p>
-            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$5000" /><span>$5000 Diamond (Platinum + Table of 8 at breakfast and presenting sponsorship on all promotional materials)</span></p>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$500" /><span>$500 Silver (access to the lounge supplied with drinks and snacks, logo on the website + logo on all t- shirts)</span></p>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$1000" /><span>$1000 Gold (access to the lounge supplied with drinks and snacks, logo on the website, logo on all t- shirts + 2 invitations to breakfast)</span></p>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$2500" /><span>$2500 Platinum (access to the lounge supplied with drinks and snacks, logo on the website, logo on all t- shirts, 4 invitations to breakfast + special recognition on the printed program)</span></p>
+            <p class="intro"><input type="radio" name="sponsor" class="radio-input" value="$5000" /><span>$5000 Diamond (access to the lounge supplied with drinks and snacks, logo on the website, logo on all t- shirts, table of 8 at breakfast and presenting sponsorship on all promotional materials + special recognition on the printed program)</span></p>
             <p class="intro"><input type="radio" name="sponsor" class="radio-input" checked value="No, thanks!" /><span>No, thanks!</span></p>
 
             <div class="spacer"></div>
         </div>
 
         <div class="col-lg-6">
-            <h4 class="intro-top-fancy">Contact Last Name</h4>
-            <p class="intro"><input required class="register-input" tabindex="2" type="text" placeholder="Enter your last name..."/></p>
+
+            <h4 class="intro-top-fancy">What is your organization?</h4>
+            <p class="intro-top"><input required class="register-input" tabindex="3" type="text" placeholder="Enter your organization..."/></p>
 
             <h4 class="intro-top-fancy">Type of organization?</h4>
             <div class="form-spacer"></div>
@@ -120,6 +122,18 @@
             <h4 class="intro-top-fancy">Are you interested in donating prizes for a drawing?</h4>
             <p class="intro"><input class="register-input" type="text" tabindex="13" placeholder="Gift card, technology, etc..."/></p>
 
+            <h4 class="intro-top-fancy">Will you need access to water?</h4>
+            <div class="form-spacer"></div>
+            <input type="checkbox" value="water" id="checkbox-water" class="button-active-checkbox"/> <label for="checkbox-water"><span class="checkbox-option">I will need access to water.</span></label>
+
+            <hr />
+
+            <h4 class="intro-top-fancy">Will you need access to electricity?</h4>
+            <div class="form-spacer"></div>
+            <input type="checkbox" value="electricity" id="checkbox-electricity" class="button-active-checkbox"/> <label for="checkbox-electricity"><span class="checkbox-option">I will need access to electricity.</span></label>
+
+            <hr />
+
             <h4 class="intro-top-fancy">What will be the type of your display?</h4>
             <div class="form-spacer"></div>
             <p class="intro" style="position:relative;">
@@ -138,12 +152,12 @@
             </p>
 
             <h4 class="intro-top-fancy">Notes</h4>
-            <p class="intro"><textarea class="register-input" tabindex="14" rows="5" cols="5" placeholder="In this space, please describe any needs that you have, or elaborate on any answers that you gave above"></textarea></p>
+            <p class="intro"><textarea class="register-input" tabindex="14" rows="4" cols="5" placeholder="In this space, please describe any needs that you have, or elaborate on any answers that you gave above"></textarea></p>
 
             <div class="spacer"></div>
         </div>
 
-        <div class="col-lg-6" style="clear:left;">
+        <!-- <div class="col-lg-6" style="clear:left;">
             <div class="button register-button button-active-checkbox well well-lg" id="checkbox-water">
                 <a class="block" target="_blank" id="Water"></a>
                 Will you need access to water?
@@ -155,7 +169,7 @@
                 <a class="block" target="_blank" id="Electricity"></a>
                 Will you need access to electricity?
             </div> 
-        </div>
+        </div> -->
 
     </div><!--.row-->
 
@@ -270,7 +284,7 @@
                 applicationPriceOutput.innerHTML    = ' ($' + totalApplicationFee + ')';
 
                 this.isChecked                      = true;
-                this.style.background               = checkboxDivInputOptions.activeBackgroundColor;
+                // this.style.background               = checkboxDivInputOptions.activeBackgroundColor;
 
                 if(this.id == 'checkbox-water') {
                     divInputWaterChecked = true;
@@ -282,7 +296,7 @@
             }
 
             this.isChecked          = false;
-            this.style.background   = '';
+            // this.style.background   = '';
 
             if(this.id == 'checkbox-water') {
                 divInputWaterChecked = false;
@@ -308,7 +322,7 @@
             // fname
             inputFields.item(0).value = 'John';
             // lname
-            inputFields.item(1).value = 'Organization Name';
+            inputFields.item(1).value = 'Doe';
             // address
             inputFields.item(2).value = 'Sample Address';
             // state
@@ -318,7 +332,7 @@
             // equipment
             inputFields.item(5).value = 'No equipment needed';
             // org
-            inputFields.item(6).value = 'Doe';
+            inputFields.item(6).value = 'Organization Name';
             // city
             inputFields.item(7).value = 'Richmond';
             // zip code
@@ -397,10 +411,10 @@
             // organize parameters to match Google Sheets headers
             var parameterOrderKey = [
 
-                'param2'    ,       // lname
+                'param7'    ,       // org
                 'param15'   ,       // org. type
                 'param1'    ,       // fname
-                'param7'    ,       // org
+                'param2'    ,       // lname
                 'param10'   ,       // email
                 'param3'    ,       // address
                 'param4'    ,       // state

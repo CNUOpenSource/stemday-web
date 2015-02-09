@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>STEM Community Day - Participant Registration</title>
+<title>STEM Community Day - Vendor Registration</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link href="data/bootstrap.min.css" rel="stylesheet">
@@ -53,8 +53,8 @@
         </div>
 
         <div class="col-lg-6">
-            <h4 class="intro-top-fancy">Address</h4>
-            <p class="intro"><input required class="register-input" type="text" placeholder="Enter your address..."/></p>
+            <h4 class="intro-top-fancy">Phone</h4>
+            <p class="intro"><input required class="register-input" type="text" placeholder="Enter a phone number..."/></p>
 
             <h4 class="intro-top-fancy">E-mail</h4>
             <p class="intro"><input required class="register-input" type="text" placeholder="Enter your e-mail address..."/></p>
@@ -67,15 +67,15 @@
         <div class="spacer"></div>
         <div class="col-lg-12">
             <hr />
-            <p style="color:rgba(0,0,0,0.7);text-align:center;">Registration is free to participate STEM Day.</p>
+            <p style="color:rgba(0,0,0,0.7);text-align:center;">There will be a $100 fee to register as a vendor.</p>
             <hr />
         </div>
         <div class="spacer"></div>
 
         <div class="col-lg-12" style="clear:left;">
-            <div class="button register-button button-active2 well well-lg checkbox2">
+            <div class="button register-button button-active3 well well-lg checkbox2">
                 <a class="block" target="_blank" id="register-exhibitor"></a>
-                Register as a participant<span id="total-application-price-output"></span>
+                Register as a vendor<span id="total-application-price-output"></span>
             </div> 
         </div>
 
@@ -92,7 +92,7 @@
 <script type="text/javascript" src="data/data.js"></script>   
 <script>
 
-    var totalApplicationFee     = 0;
+    var totalApplicationFee     = 100;
 
     var inputFields             = document.getElementsByClassName('register-input');
     var registerButton          = document.getElementById('register-exhibitor');
@@ -102,6 +102,8 @@
 
     // input states
     var registrationParameters      = {};
+
+    applicationPriceOutput.innerHTML = ' ($' + totalApplicationFee + ')';
 
     // focus input field for the user
     inputFields.item(0).focus();
@@ -149,13 +151,13 @@
     function registerExhibitorWithParameters(parameters) {
 
         // tell Google Docs API to add data to spreadsheet
-        GoogleDocs.putSpreadsheetRow('AKfycby24Fg8V47vG_UWr5C8jF93XqvaeAyVVUkInPkueGD5', parameters, function(error, data) {
+        GoogleDocs.putSpreadsheetRow('AKfycbw5eAyAvhQ_GC_pVFsGb5Q2LC2x_DSdsk4Z8UsBK1ChYUpZM9Dq', parameters, function(error, data) {
             
             if(error) {
                 return console.log('<GoogleDocs> ERR: ' + error);
             }
 
-            window.location.href = 'successful-registration.html?type=participant';
+            window.location.href = 'successful-registration.html?type=vendor';
 
         });
 
