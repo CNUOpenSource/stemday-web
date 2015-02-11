@@ -207,7 +207,7 @@ window.onload = function() {
 							slider.errors.push(error);
 						}
 
-						if(amount && amount-1 > 0) slider.slide.add(amount-1,callback);
+						if(amount && amount-1 > 0) slider.slide.add(amount-1, callback);
 						else callback.call(this,error,slider.slides);
 					};
 
