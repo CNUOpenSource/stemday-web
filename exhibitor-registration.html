@@ -53,13 +53,13 @@
             <p class="intro"><input required class="register-input" tabindex="2" type="text" placeholder="Enter your last name..."/></p>
 
             <h4 class="intro-top-fancy">Address</h4>
-            <p class="intro"><input required class="register-input" tabindex="4" type="text" placeholder="Enter an address for the organization..."/></p>
+            <p class="intro"><input required class="register-input" tabindex="5" type="text" placeholder="Enter an address for the organization..."/></p>
 
             <h4 class="intro-top-fancy">State</h4>
-            <p class="intro"><input required class="register-input" tabindex="6" type="text" placeholder="Enter your organization's state..."/></p>
+            <p class="intro"><input required class="register-input" tabindex="7" type="text" placeholder="Enter your organization's state..."/></p>
 
             <h4 class="intro-top-fancy">Phone</h4>
-            <p class="intro"><input required class="register-input" tabindex="8" type="text" placeholder="Enter a phone number..."/></p>
+            <p class="intro"><input required class="register-input" tabindex="9" type="text" placeholder="Enter a phone number..."/></p>
 
             <h4 class="intro-top-fancy">Will you require any equipment?</h4>
             <p class="intro"><input class="register-input" type="text" tabindex="10" placeholder="List anything you might need to present..."/></p>
@@ -101,14 +101,14 @@
 
         <div class="col-lg-6">
 
-            <h4 class="intro-top-fancy">What is your organization?</h4>
+            <p style="display:block;clear:left;"><h4 class="intro-top-fancy">What is your organization?</h4></p>
             <p class="intro-top"><input required class="register-input" tabindex="3" type="text" placeholder="Enter your organization..."/></p>
 
             <h4 class="intro-top-fancy">Type of organization?</h4>
             <div class="form-spacer"></div>
             <p class="intro" style="position:relative;">
                 <input type="text" id="other-input-box" placeholder="Enter your organization's type..."/>
-                <select id="org-list">
+                <select id="org-list" tabindex="4">
                     <option value="K12 School">K12 School</option>
                     <option value="Commercial Business">Commercial Business</option>
                     <option value="Non-Profit">Non-Profit</option>
@@ -121,10 +121,10 @@
             </p>
 
             <h4 class="intro-top-fancy">City</h4>
-            <p class="intro"><input required class="register-input" tabindex="5" type="text" placeholder="Enter a city..."/></p>
+            <p class="intro"><input required class="register-input" tabindex="6" type="text" placeholder="Enter a city..."/></p>
 
             <h4 class="intro-top-fancy">Zip Code</h4>
-            <p class="intro"><input required class="register-input" type="text" tabindex="7" placeholder="Enter your organization's zip code..."/></p>
+            <p class="intro"><input required class="register-input" type="text" tabindex="8" placeholder="Enter your organization's zip code..."/></p>
 
             <h4 class="intro-top-fancy">E-mail</h4>
             <p class="intro"><input required class="register-input" type="text" tabindex="9" placeholder="Enter an e-mail address..."/></p>
@@ -140,11 +140,11 @@
 
             <h4 class="intro-top-fancy">I will need access to..</h4>
             <div class="form-spacer"></div>
-            <input type="checkbox" value="water" id="checkbox-water" class="button-active-checkbox"/> <label for="checkbox-water"><span class="checkbox-option">I will need access to water.</span></label>
+            <input type="checkbox" value="water" id="checkbox-water" class="button-active-checkbox" tabindex="14"/> <label for="checkbox-water"><span class="checkbox-option">I will need access to water.</span></label>
 
             <br />
 
-            <input type="checkbox" value="electricity" id="checkbox-electricity" class="button-active-checkbox"/> <label for="checkbox-electricity"><span class="checkbox-option">I will need access to electricity.</span></label>
+            <input type="checkbox" value="electricity" id="checkbox-electricity" class="button-active-checkbox" tabindex="15"/> <label for="checkbox-electricity"><span class="checkbox-option">I will need access to electricity.</span></label>
 
             <hr />
 
@@ -152,7 +152,7 @@
             <div class="form-spacer"></div>
             <p class="intro" style="position:relative;">
                 <!-- <input class="register-input" type="text" placeholder="In order to exhibit, I will need..."/> -->
-                <select id="display-list">
+                <select id="display-list" tabindex="16">
                     <option value="Robotics">Robotics</option>
                     <option value="Manufacturing / Technology">Manufacturing / Technology</option>
                     <option value="Military / Police">Military / Police</option>
@@ -166,7 +166,7 @@
             </p>
 
             <h4 class="intro-top-fancy">Notes</h4>
-            <p class="intro"><textarea class="register-input" tabindex="14" rows="4" cols="5" placeholder="In this space, please describe any needs that you have, or elaborate on any answers that you gave above"></textarea></p>
+            <p class="intro"><textarea class="register-input" tabindex="17" rows="4" cols="5" placeholder="In this space, please describe any needs that you have, or elaborate on any answers that you gave above"></textarea></p>
 
             <div class="spacer"></div>
         </div>
