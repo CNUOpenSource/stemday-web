@@ -8,6 +8,15 @@
 var DEBUG_MODE                  = false;
 var INPUT_INFORMATION_REQUIRED  = 'This information is required.';
 
+// polyfill for IE
+if(typeof console == 'undefined' || typeof console.log == 'undefined') {
+	var console = {
+		log:function(text) {
+			// alert(text);
+		}
+	}
+}
+
 if(window.location.hostname == 'localhost') {
 	console.log('DEBUG MODE');
 	DEBUG_MODE = true;
@@ -61,24 +70,36 @@ GoogleDocs.httpRequest      = function(method, uri, callback) {
         uri = apiProductionModifier + '/api/' + uri;
     }
 
-    // create a new asynchronous http request object
-    var http = new XMLHttpRequest();
-    http.open(method, uri, true);
-    http.send(null);
+    // check to see if IE 9 is being used
+	if(navigator.userAgent.indexOf("MSIE ") != -1) {
 
-    http.addEventListener('readystatechange', function() {
-        
-        if(this.readyState == 4) {
-            if(this.status == 200) {
-                // send response to callee
-                callback.call(this, null, this.responseText);
-            } else {
-                // send error to callee
-                callback.call(this, this.responseText);
-            }
-        }
+		console.log('Internet Explorer detected.');
+		$.get(uri, function(response) {
+			callback.call(this, null, response);
+		});
 
-    });
+	} else {
+
+	    // create a new asynchronous http request object
+	    var http = new XMLHttpRequest();
+	    http.open(method, uri, true);
+	    http.send(null);
+
+	    http.addEventListener('readystatechange', function() {
+	        
+	        if(this.readyState == 4) {
+	            if(this.status == 200) {
+	                // send response to callee
+	                callback.call(this, null, this.responseText);
+	            } else {
+	                // send error to callee
+	                callback.call(this, this.responseText);
+	            }
+	        }
+
+	    });
+
+	}
 
 }
 
