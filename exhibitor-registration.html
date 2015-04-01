@@ -199,7 +199,7 @@
 
         <div class="col-lg-12" style="clear:left;">
             <div class="button register-button button-active2 well well-lg checkbox2">
-                <a class="block" target="_blank" id="register-exhibitor"></a>
+                <a class="block" target="_blank" id="register-exhibitor" z-index="999"></a>
                 Register as an exhibitor<span id="total-application-price-output"></span>
             </div> 
         </div>
@@ -471,7 +471,8 @@
         GoogleDocs.putSpreadsheetRow(parameters, function(error, data) {
             
             if(error) {
-                return console.log('<GoogleDocs> ERR: ' + error);
+                return;
+                // return console.log('<GoogleDocs> ERR: ' + error);
             }
 
             window.location.href = 'successful-registration.html?type=exhibitor';

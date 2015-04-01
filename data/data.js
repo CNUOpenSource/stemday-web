@@ -18,7 +18,7 @@ if(typeof console == 'undefined' || typeof console.log == 'undefined') {
 }
 
 if(window.location.hostname == 'localhost') {
-	console.log('DEBUG MODE');
+	// console.log('DEBUG MODE');
 	DEBUG_MODE = true;
 }
 
@@ -73,10 +73,19 @@ GoogleDocs.httpRequest      = function(method, uri, callback) {
     // check to see if IE 9 is being used
 	if(navigator.userAgent.indexOf("MSIE ") != -1) {
 
-		console.log('Internet Explorer detected.');
-		$.get(uri, function(response) {
-			callback.call(this, null, response);
+		// console.log('Internet Explorer detected.' + uri);
+		$.ajax({
+			url: uri + '&jsoncallback=iejsoncallback',
+			dataType: 'jsonp',
+			success: function(response) {
+				callback.call(this, null, response);
+			},
+			error: function(response) {
+				callback.call(this, null, response);
+			}
 		});
+
+		function iejsoncallback(response) {}
 
 	} else {
 
@@ -292,7 +301,8 @@ window.onload = function() {
 			var self = this;
 
 			if(!self.self) {
-				return console.log("Slider wrapper not implemented.");
+				return;
+				// return console.log("Slider wrapper not implemented.");
 			}
 
 			self.slide.current = parseInt(Math.random()*(self.size));
