@@ -1,3 +1,4 @@
-The OpenShift `nodejs` cartridge documentation can be found at:
+STEM Community Day
+==================
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
+Website for CNU STEM Community Day
