@@ -149,14 +149,14 @@
         </div><!--.list-group-->
     </div>
 
-    <div class="col-lg-4" id="register" style="clear:left;">
+    <div class="col-lg-3" id="register" style="clear:left;">
     <hr />
         <div class="button register-button button-active well well-lg">
             <a href="exhibitor-registration.html" class="block" id="block-link-1"></a>
             Exhibitor Registration
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
     <hr />
         <div class="button register-button button-active2 well well-lg">
             <a href="participant-registration.html" class="block" id="block-link-2"></a>
@@ -164,11 +164,19 @@
         </div>
     </div>
 
+    <div class="col-lg-3">
     <hr />
-    <div class="col-lg-4">
+        <div class="button register-button button-active4 well well-lg">
+            <a href="http://www.volunteerpeninsula.org/aam/general/event/?doc_id=1553" class="block" id="block-link-3"></a>
+            Volunteer Registration
+        </div>
+    </div>
+
+    <hr />
+    <div class="col-lg-3">
     <hr />
         <div class="button register-button button-active3 well well-lg">
-            <a href="vendor-registration.html" class="block" id="block-link-2"></a>
+            <a href="https://cnu.irisregistration.com/Form/STEM2015" class="block" id="block-link-4"></a>
             Vendor Registration
         </div>
     </div>
@@ -189,7 +197,7 @@ if(DEBUG_MODE == null) {
     var anchorLinks = document.getElementsByTagName('a');
     for(var i = 0; i < anchorLinks.length; i++) {
         anchorLinks.item(i).addEventListener('click', function(e) {
-            if(this.id == 'block-link-1' || this.id == 'block-link-2') {
+            if(this.id == 'block-link-1' || this.id == 'block-link-2' || this.id == 'block-link-3' || this.id == 'block-link-4') {
                 e.preventDefault();
                 e.stopPropagation();
                 window.location.href = '/register' + this.getAttribute('href').split('register')[1];
