@@ -94,7 +94,7 @@
 
     var totalApplicationFee     = 0;
 
-    var inputFields             = document.getElementsByClassName('register-input');
+    var inputFields             = $('.register-input');
     var registerButton          = document.getElementById('register-exhibitor');
     var applicationPriceOutput  = document.getElementById('total-application-price-output');
 
@@ -104,11 +104,11 @@
     var registrationParameters      = {};
 
     // focus input field for the user
-    inputFields.item(0).focus();
+    inputFields[0].focus();
 
     // add event listeners
 
-    registerButton.addEventListener('click', function() {
+    $(registerButton).on('click', function() {
         handleRegistration();
     });
 
@@ -119,17 +119,17 @@
         // grab all of the input fields 
         for(var i = 0; i < inputFields.length; i++) {
             
-            if(inputFields.item(i).value == '') {
+            if(inputFields[i].value == '') {
 
-                if(inputFields.item(i).required) {
-                    inputFields.item(i).placeholder = 'This information is required.';
+                if(inputFields[i].required) {
+                    inputFields[i].placeholder = 'This information is required.';
                     allFieldsFilled                 = false;
                 } else {
                     registrationParameters['param' + (i + 1)] = 'None';
                 }
 
             } else {
-                registrationParameters['param' + (i + 1)] = inputFields.item(i).value;
+                registrationParameters['param' + (i + 1)] = inputFields[i].value;
             }
 
         }

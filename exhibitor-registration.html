@@ -224,10 +224,10 @@
 
     // define dom element references and styling options
 
-    var inputFields             = document.getElementsByClassName('register-input');
-    var checkboxDivInputs       = document.getElementsByClassName('button-active-checkbox');
-    var fieldsThatShowExtra     = document.getElementsByClassName('show-extra');
-    var sponsorRadioInputs      = document.getElementsByClassName('radio-input-radio');
+    var inputFields             = $('.register-input');
+    var checkboxDivInputs       = $('.button-active-checkbox');
+    var fieldsThatShowExtra     = $('.show-extra');
+    var sponsorRadioInputs      = $('.radio-input-radio');
     var otherDivInput           = document.getElementById('other-input-box');
     var orgListInput            = document.getElementById('org-list');
     var displayListInput        = document.getElementById('display-list');
@@ -246,7 +246,7 @@
         activeBackgroundColor : '#357ebd'
     };
 
-    orgListInput.addEventListener('change', function() {
+    $(orgListInput).on('change', function() {
 
         if(this.value == 'Other') {
 
@@ -265,17 +265,17 @@
     });
 
     // focus input field for the user
-    inputFields.item(0).focus();
+    inputFields[0].focus();
 
     // attach event listeners
 
-    registerButton.addEventListener('click', function() {
+    $(registerButton).on('click', function() {
         handleRegistration();
     });
 
     // add event listeners for radio inputs
     for(var i = 0; i < sponsorRadioInputs.length; i++) {
-        sponsorRadioInputs.item(i).addEventListener('click', function() {
+        $(sponsorRadioInputs[i]).on('click', function() {
             radioInputSponsorChecked    = true;
             radioInputSponsorValue      = this.value;
         });
@@ -283,7 +283,7 @@
 
     // add event listeners for form inputs that require extra options / show the overlay
     for(var i = 0; i < fieldsThatShowExtra.length; i++) {
-        fieldsThatShowExtra.item(i).addEventListener('click', function() {
+        $(fieldsThatShowExtra[i]).on('click', function() {
             displayOverlayWithOptions();
         });
     }
@@ -291,7 +291,7 @@
     // add event listeners for utility buttons
     for(var i = 0; i < checkboxDivInputs.length; i++) {
 
-        checkboxDivInputs.item(i).addEventListener('click', function() {
+        $(checkboxDivInputs[i]).on('click', function() {
 
             if(!this.isChecked) {
 
@@ -334,31 +334,31 @@
         (function testActionPrefillFormData() {
 
             // fname
-            inputFields.item(0).value = 'John';
+            inputFields[0].value = 'John';
             // lname
-            inputFields.item(1).value = 'Doe';
+            inputFields[1].value = 'Doe';
             // address
-            inputFields.item(2).value = 'Sample Address';
+            inputFields[2].value = 'Sample Address';
             // state
-            inputFields.item(3).value = 'Virginia';
+            inputFields[3].value = 'Virginia';
             // phone
-            inputFields.item(4).value = '(804) 555 5555';
+            inputFields[4].value = '(804) 555 5555';
             // equipment
-            inputFields.item(5).value = 'No equipment needed';
+            inputFields[5].value = 'No equipment needed';
             // org
-            inputFields.item(6).value = 'Organization Name';
+            inputFields[6].value = 'Organization Name';
             // city
-            inputFields.item(7).value = 'Richmond';
+            inputFields[7].value = 'Richmond';
             // zip code
-            inputFields.item(8).value = '23229';
+            inputFields[8].value = '23229';
             // email
-            inputFields.item(9).value = 'sample.email.12@cnu.edu';
+            inputFields[9].value = 'sample.email.12@cnu.edu';
             // # tables
-            inputFields.item(10).value = '3';
+            inputFields[10].value = '3';
             // giveaways
-            inputFields.item(11).value = 'Nope';
+            inputFields[11].value = 'Nope';
             // drawing
-            inputFields.item(13).value = 'Notes';
+            inputFields[13].value = 'Notes';
 
         })();
 
@@ -374,17 +374,17 @@
         // grab all of the input fields 
         for(i = 0; i < inputFields.length && allFieldsFilled; i++) {
 
-            if(inputFields.item(i).value == '') {
+            if(inputFields[i].value == '') {
 
-                if(inputFields.item(i).required) {
-                    inputFields.item(i).placeholder = INPUT_INFORMATION_REQUIRED;
+                if(inputFields[i].required) {
+                    inputFields[i].placeholder = INPUT_INFORMATION_REQUIRED;
                     allFieldsFilled                 = false;
                 } else {
                     registrationParameters['param' + (i + 1)] = 'None';
                 }
 
             } else {
-                registrationParameters['param' + (i + 1)] = inputFields.item(i).value;
+                registrationParameters['param' + (i + 1)] = inputFields[i].value;
             }
 
         }

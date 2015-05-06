@@ -16,7 +16,7 @@
 
 // declare application constants
 
-var SERVER_HOST 			= process.env.OPENSHIFT_NODEJS_IP 	|| '127.0.0.1';
+var SERVER_HOST 			= process.env.OPENSHIFT_NODEJS_IP 	|| '0.0.0.0';
 var SERVER_PORT				= process.env.OPENSHIFT_NODEJS_PORT || 8000;
 var SERVER_HEAD_OK			= 200;
 var SERVER_HEAD_NOTFOUND 	= 404;
