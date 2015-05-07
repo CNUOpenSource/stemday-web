@@ -359,7 +359,7 @@ $(window).on('load', function() {
 
 	for(var i=0;i<a.length;i++) {
 
-		$(a[i]).on('click', function(e) {
+		$(a.item(i)).on('click', function(e) {
 
 			var attr = $(this).attr('href');
 

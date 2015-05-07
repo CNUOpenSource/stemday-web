@@ -90,6 +90,27 @@ position:absolute; left:-5px; top:-16px;
 display:none;
 }
 
+ul#sponsors {
+	list-style-type:none;
+	margin:10px 0 0 0;
+	padding:0;
+	clear:left;
+}
+	ul#sponsors li {
+		background:transparent;
+		display:inline-block;
+		float:left;
+		max-width:50%;
+		min-height:10px;
+		text-align:center;
+		width:50%;
+	}
+		ul#sponsors li img {
+			margin:0 auto 0 auto;
+			max-width:250px;
+			width:100%;
+		}
+
 .overlay-options-wrapper {
 	width:50%;
 }
