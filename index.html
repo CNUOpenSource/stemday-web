@@ -32,7 +32,7 @@
         <li class="divider-vertical"></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#register">Register</a></li>
+        <li><a href="#register" id="register-nav-link">Register</a></li>
     </ul>
   </div>
 </div>
@@ -162,31 +162,31 @@
         <div class="col-lg-3" id="register" style="clear:left;">
         <hr />
             <div class="button register-button button-active well well-lg">
-                <a href="exhibitor-registration.html" class="block" id="block-link-1"></a>
                 Exhibitor Registration
+                <a href="exhibitor-registration.html" class="block" id="block-link-1"></a>
             </div>
         </div>
         <div class="col-lg-3">
         <hr />
             <div class="button register-button button-active2 well well-lg">
-                <a href="participant-registration.html" class="block" id="block-link-2"></a>
                 Participant Registration
+                <a href="participant-registration.html" class="block" id="block-link-2"></a>
             </div>
         </div>
 
         <div class="col-lg-3">
         <hr />
             <div class="button register-button button-active4 well well-lg">
-                <a href="http://www.volunteerpeninsula.org/aam/general/event/?doc_id=1553" class="block" id="block-link-3"></a>
                 Volunteer Registration
+                <a href="http://www.volunteerpeninsula.org/aam/general/event/?doc_id=1553" class="block" id="block-link-3"></a>
             </div>
         </div>
 
         <div class="col-lg-3">
         <hr />
             <div class="button register-button button-active3 well well-lg">
-                <a href="https://cnu.irisregistration.com/Form/STEM2015" class="block" id="block-link-4"></a>
                 Vendor Registration
+                <a href="https://cnu.irisregistration.com/Form/STEM2015" class="block" id="block-link-4"></a>
             </div>
         </div>
     </div><!--.row-->
@@ -205,7 +205,7 @@
 if(DEBUG_MODE == null) {
     var anchorLinks = document.getElementsByTagName('a');
     for(var i = 0; i < anchorLinks.length; i++) {
-        %(anchorLinks.item(i)).on('click', function(e) {
+        $(anchorLinks.item(i)).on('click', function(e) {
             if(this.id == 'block-link-1' || this.id == 'block-link-2' || this.id == 'block-link-3' || this.id == 'block-link-4') {
                 e.preventDefault();
                 e.stopPropagation();

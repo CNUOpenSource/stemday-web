@@ -354,22 +354,29 @@ $(window).on('load', function() {
 	};
 
 	//make page slide to local link (hashtag) instead of jumping
-	var a = document.getElementsByTagName('a');
-	var triggs = ['#register'];
+	var registerLink = document.getElementById('register-nav-link');
 
-	for(var i=0;i<a.length;i++) {
+	$(registerLink).on('click', function(e) {
+		e.preventDefault();
+		$('html,body').animate({scrollTop:$('#register').offset().top},1000);
+	});
 
-		$(a.item(i)).on('click', function(e) {
+	// var a = document.getElementsByTagName('a');
+	// var triggs = ['#register'];
 
-			var attr = $(this).attr('href');
+	// for(var i=0;i<a.length;i++) {
 
-			if($.inArray(attr, triggs) != -1) {
-				e.preventDefault();
-				$('html,body').animate({scrollTop:$(attr).offset().top},1000);
-			}
+	// 	$(a.item(i)).on('click', function(e) {
 
-		});
-	}
+	// 		var attr = $(this).attr('href');
+
+	// 		if($.inArray(attr, triggs) != -1) {
+	// 			e.preventDefault();
+	// 			$('html,body').animate({scrollTop:$(attr).offset().top},1000);
+	// 		}
+
+	// 	});
+	// }
 
 	//init slider
 	slider.init();
